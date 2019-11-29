@@ -10,7 +10,7 @@ categories: Camel
 tags: Camel
 ---
 
-年初的时候写过一篇有关[Camel 3.x 的介绍](https://willemjiang.github.io/apache/camel/2019/01/12/apache-camel-introducation.html)。 Camel 3.0 在经历了[4个里程碑发布](https://camel.apache.org/camel-300-m4-milestone-4-release.html)之后，最近3.0版本正式发版了。我想现在困扰大家最大的问题就是Camel 3.0 带来哪些变化呢？如果要从Camel 2.x 升级到 Camel 3.x需要注意哪些事情呢？ 其实社区开发者一直在更新一份叫做[升级指南](https://github.com/apache/camel/blob/master/docs/user-manual/modules/ROOT/pages/camel-3-migration-guide.adoc)的文档，里面记录了Camel 3.x的最新修改。 下面我会结合我的理解把重要的内容展现给大家。
+年初的时候写过一篇有关[Camel 3.x 的介绍](https://willemjiang.github.io/apache/camel/2019/01/12/apache-camel-introducation.html)。 Camel 3.0 在经历了4个里程版本以及3个RC版本之后，发布了[3.0正式版](https://camel.apache.org/blog/release-3-0-0.html)。我想现在困扰大家最大的问题就是Camel 3.0 带来哪些变化呢？如果要从Camel 2.x 升级到 Camel 3.x需要注意哪些事情呢？ 其实社区开发者一直在更新一份叫做[升级指南](https://github.com/apache/camel/blob/master/docs/user-manual/modules/ROOT/pages/camel-3-migration-guide.adoc)的文档，里面记录了Camel 3.x的最新修改。 下面我会结合我的理解把重点的内容翻译成中文展现给大家。
 
 ### JDK支持
 
@@ -173,4 +173,4 @@ Camel3移除了多Camel2已经废弃的组件,例如`camel-http`, `camel-hdfs`, 
 
 * API迁移变化
 
-  在升级到Camel3 的过程可能会出现相关包迁移的问题，大家可以通过查找[相关文档](https://github.com/apache/camel/blob/master/docs/user-manual/modules/ROOT/pages/camel-3-migration-guide.adoc#moved-apis)获取详细信息。 
+  在升级到Camel3 的过程可能会出现相关包迁移的问题，大家可以通过查找[相关文档](https://github.com/apache/camel/blob/master/docs/user-manual/modules/ROOT/pages/camel-3-migration-guide.adoc#moved-apis)获取详细信息。
