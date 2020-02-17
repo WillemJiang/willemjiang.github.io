@@ -6,7 +6,7 @@ comments: true
 description: "介绍了Camel的基本概念"
 keywords: "apache camel"
 categories: apache camel
-
+toc: true
 tags: camel
 ---
 

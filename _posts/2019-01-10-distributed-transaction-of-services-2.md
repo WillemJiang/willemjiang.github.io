@@ -6,7 +6,7 @@ comments: true
 description: "在本文中我们先从分布式事务场景入手，采用交互图的方式，向大家介绍分布式Saga以及TCC分布式事务协调协议交互，最后结合ServiceComb Pack所提供的示例向大家介绍如何编写Saga以及TCC的应用代码。"
 keywords: "ServiceComb Pack"
 categories: ServiceComb Pack
-
+toc: true
 tags: Pack
 ---
 

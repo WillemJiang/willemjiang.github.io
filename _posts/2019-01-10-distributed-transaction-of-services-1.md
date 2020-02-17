@@ -6,7 +6,7 @@ comments: true
 description: "本文从分布式事务需要解决的问题入手，向大家介绍了建立在补充基础之上的基于服务的分布式事务的解决思路。接下来我们结合具体的示例介绍了完美的补偿（TCC）和非完美补偿（Saga）两种分布式事务协调协议，最后结合ServiceComb Pack的实现原理详细介绍了ServiceComb Pack的架构实现。"
 keywords: "ServiceComb Pack"
 categories: ServiceComb Pack
-
+toc: true
 tags: Pack
 ---
 

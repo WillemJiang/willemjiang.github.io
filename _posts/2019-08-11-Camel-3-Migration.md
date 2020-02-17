@@ -6,7 +6,7 @@ comments: true
 description: "Apache Camel 2.x 至 3.x 升级指南。"
 keywords: "Camel3"
 categories: Camel
-
+toc: true
 tags: Camel
 ---
 

@@ -4,6 +4,7 @@ title: "如何排查Netty内存泄露问题？"
 date: 2016-11-16 18:21:34
 comments: true
 description: "最近我帮着处理了一个有关Camel Netty4内存泄露的问题，起初只是帮着Review相关的PR，随着工作内容的深入发现了一个暗藏有两年多的内存泄露的Bug。整个除虫的过程很有意思，其中涉及到了在代码里面捕捉Log事件，利用Netty的内存检测工具寻找内存使用的问题等等。"
+toc: true
 keywords: "netty, memory leak, java"
 categories: Java
 
