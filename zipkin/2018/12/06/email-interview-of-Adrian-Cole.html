@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>专访Zipkin项目Leader Adrain Cole | Willem Jiang‘s Blog</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="专访Zipkin项目Leader Adrain Cole" />
+<meta name="author" content="Willem Jiang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="最近有幸通过Email采访了Zipkin项目的主要开发维护人员 Adrian Cole， 和他聊了一下有关 Zipkin项目的背景以及用户是如何使用Zipkin构建分布式追踪系统。特别值得一提的是Adrian一直在世界各地举办分布式追踪的workshop，通过sites（局点）文档收集到了大量用户在使用Zipkin构建分布式追踪系统一手资料。" />
+<meta property="og:description" content="最近有幸通过Email采访了Zipkin项目的主要开发维护人员 Adrian Cole， 和他聊了一下有关 Zipkin项目的背景以及用户是如何使用Zipkin构建分布式追踪系统。特别值得一提的是Adrian一直在世界各地举办分布式追踪的workshop，通过sites（局点）文档收集到了大量用户在使用Zipkin构建分布式追踪系统一手资料。" />
+<link rel="canonical" href="https://willemjiang.github.io/zipkin/2018/12/06/email-interview-of-Adrian-Cole.html" />
+<meta property="og:url" content="https://willemjiang.github.io/zipkin/2018/12/06/email-interview-of-Adrian-Cole.html" />
+<meta property="og:site_name" content="Willem Jiang‘s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-12-06T04:27:36+08:00" />
+<script type="application/ld+json">
+{"description":"最近有幸通过Email采访了Zipkin项目的主要开发维护人员 Adrian Cole， 和他聊了一下有关 Zipkin项目的背景以及用户是如何使用Zipkin构建分布式追踪系统。特别值得一提的是Adrian一直在世界各地举办分布式追踪的workshop，通过sites（局点）文档收集到了大量用户在使用Zipkin构建分布式追踪系统一手资料。","author":{"@type":"Person","name":"Willem Jiang"},"@type":"BlogPosting","url":"https://willemjiang.github.io/zipkin/2018/12/06/email-interview-of-Adrian-Cole.html","headline":"专访Zipkin项目Leader Adrain Cole","dateModified":"2018-12-06T04:27:36+08:00","datePublished":"2018-12-06T04:27:36+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://willemjiang.github.io/zipkin/2018/12/06/email-interview-of-Adrian-Cole.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://willemjiang.github.io/feed.xml" title="Willem Jiang‘s Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Willem Jiang‘s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <p>发表于2018-12-06 04:27:36 +0800</p>
+
+<ul class="section-nav">
+<li class="toc-entry toc-h3"><a href="#总所周知zipkin项目起源于twitter-您能给我们介绍一下项目的相关背景吗">总所周知Zipkin项目起源于Twitter， 您能给我们介绍一下项目的相关背景吗？</a></li>
+<li class="toc-entry toc-h3"><a href="#分布式调用追踪对微服务监控的价值为什么大家要为微服务建这样的追踪系统">分布式调用追踪对微服务监控的价值，为什么大家要为微服务建这样的追踪系统？</a></li>
+<li class="toc-entry toc-h3"><a href="#在业界已经大量采用微服务架构的今天zipkin在工业界微服务系统问题追踪方面扮演了很重要的角色您能给我们介绍一下业界是如何使用zipkin项目的吗">在业界已经大量采用微服务架构的今天，Zipkin在工业界微服务系统问题追踪方面扮演了很重要的角色，您能给我们介绍一下业界是如何使用Zipkin项目的吗？</a></li>
+<li class="toc-entry toc-h3"><a href="#我们知道zipkin项目目前在生产环境中大量使用他们是直接使用这些项目还是依据自己的需要对项目进行了相关的修改">我们知道Zipkin项目目前在生产环境中大量使用，他们是直接使用这些项目还是依据自己的需要对项目进行了相关的修改？</a></li>
+<li class="toc-entry toc-h3"><a href="#zipkin项目缺省是支持中等规模的使用场景-为了支持更大规模的使用场景我们需要做些什么">Zipkin项目缺省是支持中等规模的使用场景， 为了支持更大规模的使用场景，我们需要做些什么？</a></li>
+<li class="toc-entry toc-h3"><a href="#目前zipkin在线局点日常处理span的数据流大概是多少-zipkin缺省能支持存储一个月的数据吗在zipkin的存储方面你有什么好的建议">目前Zipkin在线局点日常处理span的数据流大概是多少？ Zipkin缺省能支持存储一个月的数据吗？在Zipkin的存储方面你有什么好的建议？</a></li>
+<li class="toc-entry toc-h3"><a href="#zipkin是如何对接分析系统amazon-x-ray-apache-skywalking-or-expedia-haystack的对此你有什么好的建议">Zipkin是如何对接分析系统（Amazon X-Ray, Apache SkyWalking or Expedia HayStack）的？对此你有什么好的建议？</a></li>
+<li class="toc-entry toc-h3"><a href="#openzipkin是什么这些年zipkin社区是怎么发展起来的如何加入到zipkin社区中">OpenZipkin是什么？这些年Zipkin社区是怎么发展起来的？如何加入到Zipkin社区中？</a></li>
+<li class="toc-entry toc-h3"><a href="#zipkin最近加入asf孵化器这对于zipkin来说意味着什么">Zipkin最近加入ASF孵化器，这对于Zipkin来说意味着什么？</a></li>
+</ul><p>最近有幸通过Email采访了Zipkin项目的主要开发维护人员 Adrian Cole， 和他聊了一下有关 Zipkin项目的背景以及用户是如何使用Zipkin构建分布式追踪系统。特别值得一提的是Adrian一直在世界各地举办分布式追踪的<a href="https://cwiki.apache.org/confluence/display/ZIPKIN/Workshops">workshop</a>，通过<a href="https://cwiki.apache.org/confluence/display/ZIPKIN/Sites">sites</a> （局点）文档收集到了大量用户在使用Zipkin构建分布式追踪系统一手资料。</p>
+
+<p>现在，先简单介绍一下Adrian， Adrian一直在从事云计算相关开源项目的开发， 是开源项目<a href="https://jclouds.apache.org/">Apache jclouds</a>和<a href="https://github.com/OpenFeign">OpenFeign</a>的创始人。 最近几年，他专注于分布式跟踪领域，是<a href="https://github.com/openzipkin/">OpenZipkin</a> 项目的主要开发维护人员。 Adrian目前在Pivotal Spring Cloud OSS团队工作。在加入Pivotal之前，他还在Twitter（Zipkin的诞生地），Square，Netflix工作过。</p>
+
+<h3 id="总所周知zipkin项目起源于twitter-您能给我们介绍一下项目的相关背景吗">
+<a class="anchor" href="#%E6%80%BB%E6%89%80%E5%91%A8%E7%9F%A5zipkin%E9%A1%B9%E7%9B%AE%E8%B5%B7%E6%BA%90%E4%BA%8Etwitter-%E6%82%A8%E8%83%BD%E7%BB%99%E6%88%91%E4%BB%AC%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%9B%B8%E5%85%B3%E8%83%8C%E6%99%AF%E5%90%97" aria-hidden="true"><span class="octicon octicon-link"></span></a>总所周知Zipkin项目起源于Twitter， 您能给我们介绍一下项目的相关背景吗？</h3>
+
+<p>Zipkin是由Twitter内部构建的分布式追踪项目，于2012年开源。它最初被称为BigBrotherBird，因此即使在今天，Zipkin定义http消息头也被命名为“B3”。 Twitter早期因为业务发展迅猛，经常会出现系统过载情况。每当出现这种情况时，用户会看到一条<a href="http://www.yiyinglu.com/failwhale/cn/">搁浅的鲸鱼</a>显示在页面上。 Zipkin这个名字也与鲸鱼有关，因为Zipkin是鱼叉的意思，构建初衷是为了追踪“搁浅的鲸鱼”相关的系统延迟问题。Zipkin的成功除了和Twitter的的品牌加持有关，其他因素也起到很大作用：一是Zipkin包含了客户端、服务器、用户界面等所有分布式追踪需要的组件；此外，Twitter Engineering上一篇介绍Zipkin的<a href="https://blog.twitter.com/engineering/en_us/a/2012/distributed-systems-tracing-with-zipkin.html">博客</a>也引起了轰动。随着时间的推移，Zipkin业界知名的分布式追踪工具 。</p>
+
+<h3 id="分布式调用追踪对微服务监控的价值为什么大家要为微服务建这样的追踪系统">
+<a class="anchor" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%B0%83%E7%94%A8%E8%BF%BD%E8%B8%AA%E5%AF%B9%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9B%91%E6%8E%A7%E7%9A%84%E4%BB%B7%E5%80%BC%E4%B8%BA%E4%BB%80%E4%B9%88%E5%A4%A7%E5%AE%B6%E8%A6%81%E4%B8%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BB%BA%E8%BF%99%E6%A0%B7%E7%9A%84%E8%BF%BD%E8%B8%AA%E7%B3%BB%E7%BB%9F" aria-hidden="true"><span class="octicon octicon-link"></span></a>分布式调用追踪对微服务监控的价值，为什么大家要为微服务建这样的追踪系统？</h3>
+
+<p>这里我想引用Netflix的<a href="https://cwiki.apache.org/confluence/display/ZIPKIN/Netflix">局点文档</a>（Zipkin的用户使用报告）中的描述来总结分布式追踪系统的价值：</p>
+
+<p>​	<em>“ 其商业价值在于为系统提供了一个操作层面的可视化界面，同时提升开发人员的生产效率。”</em></p>
+
+<p>对于微服务系统来说，如果没有分布式追踪工具的帮助，要了解各个服务之间的调用关系是相当困难的。 即使对于非常资深的工程师来说，如果只依靠追踪日志文件，分析系统监控信息，也是很难快速定位和发现微服务系统问题的。 分布式调用追踪系统可以帮助开发人员或系统运维人员及时了解应用程序及其底层服务的执行情况，以识别和解决性能问题或者是发现错误的根本原因。分布式追踪系统可以在请求通过应用系统时提供端到端的视图，显示应用程序底层组件相关调用关系，从而帮助开发人员分析和调试生产环境下的分布式应用程序。</p>
+
+<h3 id="在业界已经大量采用微服务架构的今天zipkin在工业界微服务系统问题追踪方面扮演了很重要的角色您能给我们介绍一下业界是如何使用zipkin项目的吗">
+<a class="anchor" href="#%E5%9C%A8%E4%B8%9A%E7%95%8C%E5%B7%B2%E7%BB%8F%E5%A4%A7%E9%87%8F%E9%87%87%E7%94%A8%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%9A%84%E4%BB%8A%E5%A4%A9zipkin%E5%9C%A8%E5%B7%A5%E4%B8%9A%E7%95%8C%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E9%97%AE%E9%A2%98%E8%BF%BD%E8%B8%AA%E6%96%B9%E9%9D%A2%E6%89%AE%E6%BC%94%E4%BA%86%E5%BE%88%E9%87%8D%E8%A6%81%E7%9A%84%E8%A7%92%E8%89%B2%E6%82%A8%E8%83%BD%E7%BB%99%E6%88%91%E4%BB%AC%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E4%B8%9A%E7%95%8C%E6%98%AF%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8zipkin%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%90%97" aria-hidden="true"><span class="octicon octicon-link"></span></a>在业界已经大量采用微服务架构的今天，Zipkin在工业界微服务系统问题追踪方面扮演了很重要的角色，您能给我们介绍一下业界是如何使用Zipkin项目的吗？</h3>
+
+<p>在回答这个问题之前，我们先简单介绍一下<a href="https://zipkin.io/pages/architecture.html">Zipkin的系统架构</a>。Zipkin包含了前端收集以及后台存储展示两部分。为了追踪应用的调用情况，我们需要在应用内部设置相关的追踪器来记录调用执行的时间以及调用操作相关的元数据信息。一般来说这些追踪器都是植入到应用框架内部的，用户应用程序基本感知不到它的存在。如下图所示当被监控的客户端向被监控的服务器端发送消息时，被监控客户端和被监控服务器端的追踪器会分别生成一个叫做Span的信息通过报告器（Report）发送到Zipkin后台。一次跨多个服务的调用一般会包含多个Span信息，这些Span信息是通过客户端与服务器之间传输的<a href="https://github.com/openzipkin/b3-propagation">消息头</a>进行关联的。 后台会通过收集器（collector）接收Span消息，并进行相关分析关联，然后将数据通过存储模块存储通过查询API起来供UI展示。</p>
+
+<p><img src="https://zipkin.io/public/img/architecture-1.png" alt="Zipkin architecture"></p>
+
+<p>Zipkin在项目开源之初就包含了一个完整的追踪解决方案方便大家上手，同时通过<a href="https://github.com/openzipkin/zipkin-api">传输协议</a>以及相关<a href="https://github.com/openzipkin/b3-propagation">消息头</a>开源， Zipkin很容易集成到用户的监控系统中。这让Zipkin能够在众多的追踪系统中脱颖而出，成为工业界最常用的追踪工具。</p>
+
+<p>在2015年的时候我们发现不是所有人都有分布调用追踪的系统使用经验，他们不太了解如何成功搭建分布式追踪系统需要做哪些工作。因此我们整理了很多业界使用Zipkin的相关局点资料，并在Google Drive上创建了相关<a href="https://drive.google.com/drive/u/1/folders/0B0tSnQT3uGdAflJLdEFhVzl6dEtrN0tPOFhmclFpOFJ5a01nZnFZaXdxdUJ2TUJfOGxhWUE">文档目录</a>存放这些资料。考虑到大家访问Google Drive可能会不太方便，后来我们创建了<a href="https://cwiki.apache.org/confluence/display/ZIPKIN/Sites"> wiki</a>来分享如何使用Zipkin，让更多人了解其他人是如何使用Zipkin来解决追踪系统中存在的问题的。</p>
+
+<p>在这里你可以看到像<a href="https://cwiki.apache.org/confluence/display/ZIPKIN/Netflix">Netflix</a>这样的大厂是如何使用Zipkin以及Elasticsearch处理每天高达5TB的追踪数据，<a href="https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=95651348">Ascend Money</a> 是如何将公有云和私有云结合在一起使用Zipkin，<a href="https://cwiki.apache.org/confluence/display/ZIPKIN/LINE"> Line</a> 是如何将Zipkin与<a href="https://github.com/line/armeria">armeria</a>结合进行异步调用追踪的，以及<a href="https://cwiki.apache.org/confluence/display/ZIPKIN/SoundCloud">Sound Cloud</a> 是<a href="https://developers.soundcloud.com/blog/using-kubernetes-pod-metadata-to-improve-zipkin-traces">如何结合Kubernetes Pod 的元数据信息清理Zipkin追踪数据的</a>。这里我们也欢迎更多的中国用户能够在此分享你们使用Zipkin的经验。</p>
+
+<p>对了，如果你是Zipkin用户, 请抽空给我们的<a href="https://github.com/openzipkin/zipkin">代码仓库</a>加星，这是对我们最大的鼓励。</p>
+
+<h3 id="我们知道zipkin项目目前在生产环境中大量使用他们是直接使用这些项目还是依据自己的需要对项目进行了相关的修改">
+<a class="anchor" href="#%E6%88%91%E4%BB%AC%E7%9F%A5%E9%81%93zipkin%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%89%8D%E5%9C%A8%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%B8%AD%E5%A4%A7%E9%87%8F%E4%BD%BF%E7%94%A8%E4%BB%96%E4%BB%AC%E6%98%AF%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%E8%BF%99%E4%BA%9B%E9%A1%B9%E7%9B%AE%E8%BF%98%E6%98%AF%E4%BE%9D%E6%8D%AE%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9C%80%E8%A6%81%E5%AF%B9%E9%A1%B9%E7%9B%AE%E8%BF%9B%E8%A1%8C%E4%BA%86%E7%9B%B8%E5%85%B3%E7%9A%84%E4%BF%AE%E6%94%B9" aria-hidden="true"><span class="octicon octicon-link"></span></a>我们知道Zipkin项目目前在生产环境中大量使用，他们是直接使用这些项目还是依据自己的需要对项目进行了相关的修改？</h3>
+
+<p>因为Zipkin项目运作是建立在用户吃自己的狗粮 (使用自己开发的软件）的基础上， 很多新工具都是先在用户内部使用，然后开源变成通用项目。 例如<a href="https://github.com/ascendcorp/zipkin-forwarder">zipkin-forwarder</a>这个项目就是Ascend结合自己的业务需要实现的跨多个数据中心转发数据实验性项目。 Yelp实现了一个<a href="https://github.com/drolando/zipkin-mux">Zipkin代理</a>用来读取多个Zipkin集群的数据。 LINE在内部开发了一个代号为“project lens”的项目来替换Zipkin UI。</p>
+
+<p>现在Zipkin的使用案例很多，不同使用案例对应的架构也不相同。这并不是说用户没有直接采用Zipkin 项目。例如<a href="https://cwiki.apache.org/confluence/display/ZIPKIN/Medidata">Mediata</a>就在他们的局点文档中描述了他们直接使用Zipkin的发行版，没有进行任何修改。</p>
+
+<h3 id="zipkin项目缺省是支持中等规模的使用场景-为了支持更大规模的使用场景我们需要做些什么">
+<a class="anchor" href="#zipkin%E9%A1%B9%E7%9B%AE%E7%BC%BA%E7%9C%81%E6%98%AF%E6%94%AF%E6%8C%81%E4%B8%AD%E7%AD%89%E8%A7%84%E6%A8%A1%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-%E4%B8%BA%E4%BA%86%E6%94%AF%E6%8C%81%E6%9B%B4%E5%A4%A7%E8%A7%84%E6%A8%A1%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E5%81%9A%E4%BA%9B%E4%BB%80%E4%B9%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>Zipkin项目缺省是支持中等规模的使用场景， 为了支持更大规模的使用场景，我们需要做些什么？</h3>
+
+<p>大规模的使用场景意味着更多的数据量，大规模用户通常会从成本以及处理或清理数据的能力来考虑这个问题。 例如，<a href="https://cwiki.apache.org/confluence/display/ZIPKIN/SoundCloud">SoundCloud</a>实现了<a href="https://developers.soundcloud.com/blog/using-kubernetes-pod-metadata-to-improve-zipkin-traces">基于kubernetes元数据清理数据的工具</a>。 以往几乎所有Zipkin大型局点都将追踪数据存储在Cassandra。 现在，像<a href="https://cwiki.apache.org/confluence/display/ZIPKIN/Netflix">Netflix</a>这样的大型局点开始采用Elasticsearch来存储数据 。 几乎所有大型局点都使用Kafka来进行大规模的数据传输。 出于考虑效率的原因，较小的站点会采用不同的传输方式。 例如，<a href="https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=95655004">Infostellar</a>使用<a href="https://github.com/line/armeria">Armeria</a> （一个类似于gRPC的异步效RPC库）来传输数据。</p>
+
+<p>大多数成熟局点也会担心数据大小而使用采样的方式来解决问题。因为我们很难为不同类型的局点设计一个通用工具，Zipkin为大家提供了多种采样选择，其中包括基于http请求的表达式的配置方式，也有支持开发客户端<a href="https://github.com/openzipkin/brave/pull/819">速率限制采样器</a>。 例如，使用Spring的局点有时会使用配置服务器实时推送采样率，这样可以在不干扰通常的低采样率的情况下抓取有趣的痕迹。</p>
+
+<p>大多数局点使用客户端采样来避免启动无用的跟踪。 例如，spring cloud sleuth的默认策略不会为健康检查等管理流量创建跟踪。  这些是通过http路径表达式完成的。 一些基于百分比的采样（例如1％或更少的流量）在数据激增时仍然存在问题。即使采样率为1％，当流量达到1000％的时候也可能会出现问题。因此，我们始终建议对系统进行冗余配置，也就是说不仅要为正常流量分配带宽和存储空间，还要提供一定的余量。但这不是一个最好的解决方案，我们开玩笑的将其称为OPP （over-provision and pray，美国流行歌曲名），通过冗余保障还有祈祷来帮我们应对数据激增的问题。</p>
+
+<p>值得注意的是许多局点站并不打算“演进”到自适应（自动）采样。 例如，Yelp在定制的无索引的廉价存储中进行100％的数据消费。这样可以在不干扰通常的低采样率的情况下直接抓取有趣的痕迹。当然在Zipkin社区中有相<a href="https://cwiki.apache.org/confluence/display/ZIPKIN/Firehose+mode">关自适应采样配置的设计讨论</a>，以突出问题区域而不会增加基本采样率的复杂性。自适应是一个有趣的话题，绝对可以应对数据激增问题，但大家通常会用不同的方法来实现自适应。欢迎大家就这个问题与我深入讨论。</p>
+
+<h3 id="目前zipkin在线局点日常处理span的数据流大概是多少-zipkin缺省能支持存储一个月的数据吗在zipkin的存储方面你有什么好的建议">
+<a class="anchor" href="#%E7%9B%AE%E5%89%8Dzipkin%E5%9C%A8%E7%BA%BF%E5%B1%80%E7%82%B9%E6%97%A5%E5%B8%B8%E5%A4%84%E7%90%86span%E7%9A%84%E6%95%B0%E6%8D%AE%E6%B5%81%E5%A4%A7%E6%A6%82%E6%98%AF%E5%A4%9A%E5%B0%91-zipkin%E7%BC%BA%E7%9C%81%E8%83%BD%E6%94%AF%E6%8C%81%E5%AD%98%E5%82%A8%E4%B8%80%E4%B8%AA%E6%9C%88%E7%9A%84%E6%95%B0%E6%8D%AE%E5%90%97%E5%9C%A8zipkin%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E9%9D%A2%E4%BD%A0%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E7%9A%84%E5%BB%BA%E8%AE%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>目前Zipkin在线局点日常处理span的数据流大概是多少？ Zipkin缺省能支持存储一个月的数据吗？在Zipkin的存储方面你有什么好的建议？</h3>
+
+<p>Yelp处理的Span数据可能是最多的，因为它们会将100％的数据集中到专用存储群集中。但是他们也没有公布数字。Netflix的系统大约会将240 MB /秒的span数据推送到后台（大家可以算算这里有多少条span信息），一般来说一条Span数据通常不会超过1KiB，甚至远远低于1KiB。</p>
+
+<p>关于数据存储，大多数网站出于成本的考虑只保留数天的数据。不过有些用户自己提供“最喜欢的追踪”功能来长时间保留追踪数据。关于Span大小，我们建议大家使用brave或zipkin-go等工具中自带的默认值，然后根据大家的具体需求添加一些数据标签（决定是否保留数据）来提升资源利用率。</p>
+
+<p>我们也不建议把span作为日志记录器。 OpenTracing开了这个坏头，他们把日志工具和分布式追踪API相混淆，甚至在Span中的API定义了“<a href="https://github.com/opentracing/basictracer-go/blob/master/raw.go#L33">microlog</a>”。据我所知没有一个追踪系统能在系统内部把常规日志记录工作做得很好的，因为追踪系统和常规日志记录系统是两个完全不同的系统， 这样做只会损害追踪系统运行效率。</p>
+
+<p>我们建议大家根据自己的需要选择最佳的存储方式。 例如，<a href="https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=95655004">Infostellar</a>直接将追踪数据转发到Google Stackdriver上进行存储。 如果你更熟悉Elasticsearch而不是Cassandra，那么请使用Elasticsearch，反之亦然。 但是我们建议大家不要使用MySQL，因为我们的MySQL架构不是为了高性能而编写的。</p>
+
+<h3 id="zipkin是如何对接分析系统amazon-x-ray-apache-skywalking-or-expedia-haystack的对此你有什么好的建议">
+<a class="anchor" href="#zipkin%E6%98%AF%E5%A6%82%E4%BD%95%E5%AF%B9%E6%8E%A5%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9Famazon-x-ray-apache-skywalking-or-expedia-haystack%E7%9A%84%E5%AF%B9%E6%AD%A4%E4%BD%A0%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E7%9A%84%E5%BB%BA%E8%AE%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>Zipkin是如何对接分析系统（<a href="https://aws.amazon.com/xray">Amazon X-Ray</a>,<a href="http://skywalking.apache.org/"> Apache SkyWalking</a> or<a href="https://github.com/ExpediaDotCom/haystack"> Expedia HayStack</a>）的？对此你有什么好的建议？</h3>
+
+<p>你提到的所有项目都是通过接收Zipkin数据实现集成的，<a href="https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=95655004">Infostellar</a>在这方面有比较好的网站文档可以参考。</p>
+
+<p><a href="http://skywalking.apache.org/">SkyWalking</a>也提供了接入Zipkin数据的集成方式。<a href="http://skywalking.apache.org/"> SkyWalking</a>可以接受Zipkin格式的数据，这样无论是Zipkin的探针，还是其他工具，如Jaeger，只要使用相同格式的工具都可以接入到<a href="http://skywalking.apache.org/">SkyWalking</a>中。需要指出的是现在很多追踪工具都支持Zipkin格式，通过支持Zipkin格式可以很容易完成对其他追踪系统的集成工作。</p>
+
+<p>我对<a href="https://github.com/ExpediaDotCom/haystack">Haystack</a>与Zipkin集成工作的有一定的了解。他们通过Hotels.com提供的<a href="https://github.com/HotelsDotCom/pitchfork">Pitchfork</a>这个工具，将数据分别发送给Zipkin和<a href="https://github.com/ExpediaDotCom/haystack">Haystack</a>。Haystack的系统可以对Zipkin数据进行服务图聚合等处理，这样就不需要使用Zipkin的UI来处理数据了。</p>
+
+<h3 id="openzipkin是什么这些年zipkin社区是怎么发展起来的如何加入到zipkin社区中">
+<a class="anchor" href="#openzipkin%E6%98%AF%E4%BB%80%E4%B9%88%E8%BF%99%E4%BA%9B%E5%B9%B4zipkin%E7%A4%BE%E5%8C%BA%E6%98%AF%E6%80%8E%E4%B9%88%E5%8F%91%E5%B1%95%E8%B5%B7%E6%9D%A5%E7%9A%84%E5%A6%82%E4%BD%95%E5%8A%A0%E5%85%A5%E5%88%B0zipkin%E7%A4%BE%E5%8C%BA%E4%B8%AD" aria-hidden="true"><span class="octicon octicon-link"></span></a>OpenZipkin是什么？这些年Zipkin社区是怎么发展起来的？如何加入到Zipkin社区中？</h3>
+
+<p>2015年，社区有人呼吁<a href="https://groups.google.com/forum/#!msg/zipkin-dev/hug_bWIqdLY/gli4Qe1RrQAJ">把项目迁移到一个更开放的地方</a>，以便更快地发展项目。我们经过三个月的努力，于2015年7月在Github上成立了“<a href="https://github.com/openzipkin/">OpenZipkin</a>”小组。社区在此之后快速发展，大量用户在社区中交流他们在构建分布式追踪系统所遇到的问题和挑战。当社区决定把首选语言定为Java而不是Scala后，我们重新编写了服务器。我们有许多<a href="https://github.com/openzipkin/sleuth-webmvc-example">示例项目</a>帮助大家上手，而且我们认为与他人交流是最好的学习方式。如果你不熟悉追踪，最容易参与的方法就是参与到我们的<a href="https://gitter.im/openzipkin/zipkin">gitter</a>讨论中来。</p>
+
+<h3 id="zipkin最近加入asf孵化器这对于zipkin来说意味着什么">
+<a class="anchor" href="#zipkin%E6%9C%80%E8%BF%91%E5%8A%A0%E5%85%A5asf%E5%AD%B5%E5%8C%96%E5%99%A8%E8%BF%99%E5%AF%B9%E4%BA%8Ezipkin%E6%9D%A5%E8%AF%B4%E6%84%8F%E5%91%B3%E7%9D%80%E4%BB%80%E4%B9%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>Zipkin最近加入ASF孵化器，这对于Zipkin来说意味着什么？</h3>
+
+<p>Zipkin发展了一段时间后，CNCF联系我们加入，而我们考虑的是加入阿帕奇软件基金会（ASF)或者什么也不加入。当时的社区看不到加入基金会的好处，我们当时选择了什么不加入基金会。然而，社区不断发展壮大，我们也有责任成长。特别是当我们通过SkyWalking的在ASF孵化对ASF有了更深入的了解。 因为基金会要求旗下项目站在厂商中立的角度来考虑问题的，这样可以帮助Zipkin站在社区的角度上考虑如何独立发展。ASF的文化和我们也更匹配，因此Zipkin于今年8月份刚成为阿帕奇孵化器项目。</p>
+
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Willem Jiang‘s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Willem Jiang</li><li><a class="u-email" href="mailto:willemjiang AT gmail.com">willemjiang AT gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/willemjiang"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">willemjiang</span></a></li><li><a href="https://www.twitter.com/willemjiang"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">willemjiang</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>WillemJiang&#39;s blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>如何排查Netty内存泄露问题？ | Willem Jiang‘s Blog</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="如何排查Netty内存泄露问题？" />
+<meta name="author" content="Willem Jiang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="最近我帮着处理了一个有关Camel Netty4内存泄露的问题，起初只是帮着Review相关的PR，随着工作内容的深入发现了一个暗藏有两年多的内存泄露的Bug。整个除虫的过程很有意思，其中涉及到了在代码里面捕捉Log事件，利用Netty的内存检测工具寻找内存使用的问题等等。" />
+<meta property="og:description" content="最近我帮着处理了一个有关Camel Netty4内存泄露的问题，起初只是帮着Review相关的PR，随着工作内容的深入发现了一个暗藏有两年多的内存泄露的Bug。整个除虫的过程很有意思，其中涉及到了在代码里面捕捉Log事件，利用Netty的内存检测工具寻找内存使用的问题等等。" />
+<link rel="canonical" href="https://willemjiang.github.io/java/2016/11/17/netty-resource-leak-detector.html" />
+<meta property="og:url" content="https://willemjiang.github.io/java/2016/11/17/netty-resource-leak-detector.html" />
+<meta property="og:site_name" content="Willem Jiang‘s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-11-17T02:21:34+08:00" />
+<script type="application/ld+json">
+{"description":"最近我帮着处理了一个有关Camel Netty4内存泄露的问题，起初只是帮着Review相关的PR，随着工作内容的深入发现了一个暗藏有两年多的内存泄露的Bug。整个除虫的过程很有意思，其中涉及到了在代码里面捕捉Log事件，利用Netty的内存检测工具寻找内存使用的问题等等。","author":{"@type":"Person","name":"Willem Jiang"},"@type":"BlogPosting","url":"https://willemjiang.github.io/java/2016/11/17/netty-resource-leak-detector.html","headline":"如何排查Netty内存泄露问题？","dateModified":"2016-11-17T02:21:34+08:00","datePublished":"2016-11-17T02:21:34+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://willemjiang.github.io/java/2016/11/17/netty-resource-leak-detector.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://willemjiang.github.io/feed.xml" title="Willem Jiang‘s Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Willem Jiang‘s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <p>发表于2016-11-17 02:21:34 +0800</p>
+
+<ul class="section-nav">
+<li class="toc-entry toc-h4"><a href="#预备知识">预备知识</a></li>
+<li class="toc-entry toc-h4"><a href="#内存泄露检测工具">内存泄露检测工具</a></li>
+<li class="toc-entry toc-h4"><a href="#camel-netty4的内存泄露问题">camel-netty4的内存泄露问题</a></li>
+</ul><p>最近我帮着处理了<a href="https://issues.apache.org/jira/browse/CAMEL-10409">一个有关Camel Netty4内存泄露的问题</a>，起初只是帮着Review相关的<a href="https://github.com/apache/camel/pull/1268">PR</a>，随着工作内容的深入发现了一个暗藏有两年多的内存泄露的<a href="https://issues.apache.org/jira/browse/CAMEL-10480">Bug</a>。整个除虫的过程很有意思，其中涉及到了在代码里面捕捉Log事件，利用Netty的内存检测工具寻找内存使用的问题等等。</p>
+
+<h4 id="预备知识">
+<a class="anchor" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86" aria-hidden="true"><span class="octicon octicon-link"></span></a>预备知识</h4>
+
+<p>Netty的ByteBuf是一个在Netty编程中经常被使用到的对象，Netty4开始对通过<a href="http://netty.io/wiki/reference-counted-objects.html">引用计数</a>的方式对这样的对象进行管理。如果这类对象的引用计数为0的话，也就是说这些对象已经不再被使用的话，Netty就可将这类对象放回到相关的资源池。</p>
+
+<p>这样的功能听起来好像和GC的功能很类似，为什么我们不能依赖GC实现这样的功能呢？ 原因是GC的实时性没有这么强，而且从程序代码内部很难直接获取到对象的引用情况。</p>
+
+<p>下面我们简单看看ByteBuf的引用计数是如何工作的：</p>
+
+<p>初始化时，引用计数为1：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">ByteBuf</span> <span class="n">buf</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="na">alloc</span><span class="o">().</span><span class="na">directBuffer</span><span class="o">();</span>
+<span class="k">assert</span> <span class="n">buf</span><span class="o">.</span><span class="na">refCnt</span><span class="o">()</span> <span class="o">==</span> <span class="mi">1</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>当调用释放操作时，相关的引用计数会-1， 如果引用计数为0， 释放操作会释放内存，或者是把对象放到对象池中：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">assert</span> <span class="n">buf</span><span class="o">.</span><span class="na">refCnt</span><span class="o">()</span> <span class="o">==</span> <span class="mi">1</span><span class="o">;</span>
+<span class="c1">// 如果引用计数为0， release() 调用返回 true .</span>
+<span class="kt">boolean</span> <span class="n">destroyed</span> <span class="o">=</span> <span class="n">buf</span><span class="o">.</span><span class="na">release</span><span class="o">();</span>
+<span class="k">assert</span> <span class="n">destroyed</span><span class="o">;</span>
+<span class="k">assert</span> <span class="n">buf</span><span class="o">.</span><span class="na">refCnt</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>如果想延长引用对象的生命周期，可以通过retain方法将引用计数+1</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">ByteBuf</span> <span class="n">buf</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="na">alloc</span><span class="o">().</span><span class="na">directBuffer</span><span class="o">();</span>
+<span class="k">assert</span> <span class="n">buf</span><span class="o">.</span><span class="na">refCnt</span><span class="o">()</span> <span class="o">==</span> <span class="mi">1</span><span class="o">;</span>
+<span class="n">buf</span><span class="o">.</span><span class="na">retain</span><span class="o">();</span>
+<span class="k">assert</span> <span class="n">buf</span><span class="o">.</span><span class="na">refCnt</span><span class="o">()</span> <span class="o">==</span> <span class="mi">2</span><span class="o">;</span>
+<span class="kt">boolean</span> <span class="n">destroyed</span> <span class="o">=</span> <span class="n">buf</span><span class="o">.</span><span class="na">release</span><span class="o">();</span>
+<span class="k">assert</span> <span class="o">!</span><span class="n">destroyed</span><span class="o">;</span>
+<span class="k">assert</span> <span class="n">buf</span><span class="o">.</span><span class="na">refCnt</span><span class="o">()</span> <span class="o">==</span> <span class="mi">1</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>对于一个引用计数为0 的对象进行操作的时候，会抛出引用计数的异常</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">assert</span> <span class="n">buf</span><span class="o">.</span><span class="na">refCnt</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">;</span>
+<span class="k">try</span> <span class="o">{</span>
+  <span class="n">buf</span><span class="o">.</span><span class="na">writeLong</span><span class="o">(</span><span class="mh">0xdeadbeef</span><span class="o">);</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nf">Error</span><span class="o">(</span><span class="s">"should not reach here"</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IllegalReferenceCountExeception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// Expected</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>由于Netty内部的Handler在处理ByteBuf的过程中已经使用 try … finally 进行释放了，如果你对Handler进行扩展的话，一般的用户处理逻辑是不会看到相关的内存对象的释放方法的。</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">channelRead</span><span class="o">(</span><span class="nc">ChannelHandlerContext</span> <span class="n">ctx</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">ByteBuf</span> <span class="n">buf</span> <span class="o">=</span> <span class="o">(</span><span class="nc">ByteBuf</span><span class="o">)</span> <span class="n">msg</span><span class="o">;</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="o">...</span>
+    <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+        <span class="n">buf</span><span class="o">.</span><span class="na">release</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>由于我们需要显式地管理引用计数（GC并不知道Netty的引用计数的实现内容），如果代码逻辑在处理的过程中出现问题（忘记释放内存了，或者是对释放后的内存对象进行操作），就很容易出现内存泄露或者是引用计数的错误。</p>
+
+<h4 id="内存泄露检测工具">
+<a class="anchor" href="#%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E6%A3%80%E6%B5%8B%E5%B7%A5%E5%85%B7" aria-hidden="true"><span class="octicon octicon-link"></span></a>内存泄露检测工具</h4>
+
+<p>为了方便我们检测内存泄露的问题，Netty提供了一个缺省的内存检测的实现<a href="https://netty.io/4.0/api/io/netty/util/ResourceLeakDetector.html">ResourceLeakDetector</a> 。<a href="https://netty.io/4.0/api/io/netty/util/ResourceLeakDetector.html">ResourceLeakDetector</a>会跟踪引用计数对象的使用情况，并将相关的引用计数对象的使用栈存储下来供开发人员除虫之用。由于引用对象追踪会耗费多的资源，因此对系统会有比较大的影响。运行Netty应用的时候，Netty缺省会采用Simple模式，即采用1%抽样来追踪相关资源分配。如果出现内存泄露，会输入相关log信息，并显示最近相关内存使用情况。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR io.netty.util.ResourceLeakDetector - LEAK:
+ ByteBuf.release() was not called before it's garbage-collected.
+</code></pre></div></div>
+
+<p>对于常规的Netty应用来说，如果出现了上面的错误日志，Netty会建议打开ADVANCED监测模式，去获取更多和内存泄露相关的信息。 一般来说这样的操作会给系统带来比较大的负担，<a href="http://logz.io/blog/netty-bytebuf-memory-leak/">有人做过统计ADVANCED模式与SIMPLE方式相比，会把系统变慢10倍。</a></p>
+
+<p>作为开发人员，我们经常会在单元测试里面把泄露级别设置成为PARANOID，就是让资源泄露检测工具对每个Buffer都进行追踪。</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">"io.netty.leakDetection.maxRecords"</span><span class="o">,</span> <span class="s">"100"</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">"io.netty.leakDetection.acquireAndReleaseOnly"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">);</span>
+<span class="nc">ResourceLeakDetector</span><span class="o">.</span><span class="na">setLevel</span><span class="o">(</span><span class="nc">ResourceLeakDetector</span><span class="o">.</span><span class="na">Level</span><span class="o">.</span><span class="na">PARANOID</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h4 id="camel-netty4的内存泄露问题">
+<a class="anchor" href="#camel-netty4%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E9%97%AE%E9%A2%98" aria-hidden="true"><span class="octicon octicon-link"></span></a>camel-netty4的内存泄露问题</h4>
+
+<p>了解了上面的有关Netty ByteBuff的问题之后，要了解camel-netty4的内存泄露问题就比较简单了。</p>
+
+<p>对于camel-netty4 组件来说，最近就有用户报了内存泄露的问题， Claus前些时候提供了相关的<a href="https://issues.apache.org/jira/browse/CAMEL-9040">修复</a>，主要修复的内容就是在CamelExchange执行完毕的时候，如果相关的内存对象引用计数&gt;0,就调用相关方法释放内存。 这样的解决似乎有点太粗暴了，有时候会造成内存的多次释放的问题。 于是Vitalii提出了新的<a href="https://issues.apache.org/jira/browse/CAMEL-10409">解决方案</a>，其核心内容就是就是把Netty引用计数释放的问题交给Netty自己来做。</p>
+
+<p>由于Netty的内存检测模块是通过Log的方式输出内存检测信息的，对于我们的单元测试来说不太方便，于是 Vitalii<a href="https://github.com/apache/camel/blob/master/components/camel-netty4/src/test/resources/log4j2.properties#L28-L32">配置</a>了一个log4j2的<a href="https://github.com/apache/camel/blob/master/components/camel-netty4/src/test/java/org/apache/camel/component/netty4/LogCaptureAppender.java">LogCaptureAppender</a>，采用直接截取Log事件的方式在<a href="https://github.com/apache/camel/blob/master/components/camel-netty4/src/test/java/org/apache/camel/component/netty4/BaseNettyTest.java#L77-L100">单元测试完毕</a>的时候检测是否存在内存泄露的问题。 这样就给写我们的单元测试检测Netty内存溢出提供了极大的便利。</p>
+
+<p>借助这样的Netty提供的内存检测工具以及camel-netty4的单元测试工具，我能在比较快的时间内定位到相关的<a href="https://github.com/apache/camel/commit/e56cc97612a07cedd5c67ff3c3b1e22bee525dfb">内存泄露问题</a>。</p>
+
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Willem Jiang‘s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Willem Jiang</li><li><a class="u-email" href="mailto:willemjiang AT gmail.com">willemjiang AT gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/willemjiang"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">willemjiang</span></a></li><li><a href="https://www.twitter.com/willemjiang"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">willemjiang</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>WillemJiang&#39;s blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

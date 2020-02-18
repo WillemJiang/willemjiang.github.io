@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>如何在minikube上安装camel-k | Willem Jiang‘s Blog</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="如何在minikube上安装camel-k" />
+<meta name="author" content="Willem Jiang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="本文主要介绍在minikube上如何安装camel-k" />
+<meta property="og:description" content="本文主要介绍在minikube上如何安装camel-k" />
+<link rel="canonical" href="https://willemjiang.github.io/camel/2019/07/06/How-to-install-camel-k-in-minikub.html" />
+<meta property="og:url" content="https://willemjiang.github.io/camel/2019/07/06/How-to-install-camel-k-in-minikub.html" />
+<meta property="og:site_name" content="Willem Jiang‘s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-07-06T20:27:36+08:00" />
+<script type="application/ld+json">
+{"description":"本文主要介绍在minikube上如何安装camel-k","author":{"@type":"Person","name":"Willem Jiang"},"@type":"BlogPosting","url":"https://willemjiang.github.io/camel/2019/07/06/How-to-install-camel-k-in-minikub.html","headline":"如何在minikube上安装camel-k","dateModified":"2019-07-06T20:27:36+08:00","datePublished":"2019-07-06T20:27:36+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://willemjiang.github.io/camel/2019/07/06/How-to-install-camel-k-in-minikub.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://willemjiang.github.io/feed.xml" title="Willem Jiang‘s Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Willem Jiang‘s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <p>发表于2019-07-06 20:27:36 +0800</p>
+
+<p><a href="https://github.com/apache/camel-k/">Apache Camel-K</a>这个项目是在2018年8月份开始启动的， 通过<a href="https://github.com/operator-framework/operator-sdk">Operator</a>的方式将Camel路由规则部署到K8S集群中。 使用过Camel的朋友应该知道Camel的内核不大，提供了实现了EIP模式的实现，但是Camel的第三方组件很多，为了能够让Camel路由规则运行起来，我们需要在工程文件中加入这些第三方的依赖。 为此Camel-K内部会根据需要加载的Camel路由规则自动生成工程文件，并完成编译，以及docker 镜像的生成工作，最后在K8S集群中完成相关的部署工作。</p>
+
+<p><img src="https://willemjiang.github.io/assets/images/camel/image-camel-k.png" alt="image-20190706215407435" /></p>
+
+<h3 id="安装minikube">安装minikube</h3>
+
+<p>对于k8s的开发者来说，要拥有一个k8s的集群还是挺不容易的一件事， minikube可以让我们在自己的笔记本电脑上通过一台虚拟机就能把k8s运行起来（当然只是单节点）。</p>
+
+<p>大家可以通过参考minikube的<a href="https://kubernetes.io/docs/tasks/tools/install-minikube/">安装文档</a>来安装minikube。</p>
+
+<p>运行minikube需要注意以下几点：</p>
+
+<ol>
+  <li>minikube 缺省使用~/.minikube/machine 来存储于虚拟机相关文件。</li>
+  <li>cache目录~/.minikube/cache会包含k8s安装相关的文件，如果你需要在其他的环境下安装minikube，可以考虑拷贝cache目录下面文件来提高minikube的启动效率。</li>
+</ol>
+
+<p>下面给出的脚本是如何创建camelk需要的minikube 虚拟机的</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>KUBERNETES_VERSION=v1.12.0
+MEMORY=10240
+CPUS=4
+DISK_SIZE=50g
+# blow away everything in the camelk profile for a clean install
+echo "Deleting the camelk profile"
+minikube delete --profile camelk
+
+# configure camelk profile
+echo "Create the profile of camelk and do some setup work"
+minikube profile camelk
+minikube config set kubernetes-version ${KUBERNETES_VERSION}
+minikube config set memory ${MEMORY}
+minikube config set cpus ${CPUS}
+minikube config set disk-size ${DISK_SIZE}
+
+# enable the local registry
+minikube addons enable registry
+
+# start minikube
+echo "Starting the minikube"
+minikube start -p camelk --vm-driver hyperkit --extra-config=apiserver.enable-admission-plugins="LimitRanger,NamespaceExists,NamespaceLifecycle,ResourceQuota,ServiceAccount,DefaultStorageClass,MutatingAdmissionWebhook"
+
+</code></pre></div></div>
+
+<p>因为minikube启动k8s的时候，需要从gcr.io上面下载镜像，如果在国内因为众所周知的原因，我们需要通过设置代理的方式才能下载相关的镜像， 这里我需要配置一下本地的HTTP代理， 由于minikube的 NO_PROXY 只支持单一IP设置，我们需要将minikube使用的local registry地址去掉。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export HOST_IP=192.168.1.100
+export HTTP_PROXY=http://${HOST_IP}:1087
+export HTTPS_PROXY=http://${HOST_IP}:1087
+# Using kubectl get services to look up the docker registry address
+# Check k8s registry sevice address, add it into NO_PROXY list
+# In this case, we need to add 10.111.125.6 into NO_PROXY
+export NO_PROXY=localhost,127.0.0.1,10.111.125.6
+</code></pre></div></div>
+
+<p>由于在minikube中需要先启动k8s之后才能知道本地docker registry的地址， 因此我们需要在第二次启动minikube的时候， 才能把minikube本地的docker registry地址加进去。</p>
+
+<p>你可以通过使用minikube stop停止minikube所在的虚拟机，在通过设置代理环境变量的方式更新需要关闭代理的信息。</p>
+
+<h3 id="安装camel-k">安装Camel-K</h3>
+
+<p>Camel-K 包含了kamel命令行指令以及operator的镜像文件以及builder镜像，大家可以通过camel-k github release页面下载到相关的二进制文件，通过运行kamel命令安装operator以及builder镜像。</p>
+
+<p>大家设置kamel执行路径之后，可以通过<code class="highlighter-rouge">kamel install</code>下面的命令安装camel-k 运行时。</p>
+
+<p>可以使用<code class="highlighter-rouge">kamel reset</code>重置当前的camel-k的安装。</p>
+
+<p>使用<code class="highlighter-rouge">kamel run xxx </code>来上传相关的camel 路由规则。</p>
+
+<p>有关Camel-K的详细安装可以参见<a href="https://github.com/apache/camel-k#installation">Camel-K安装文档</a>。</p>
+
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Willem Jiang‘s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Willem Jiang</li><li><a class="u-email" href="mailto:willemjiang AT gmail.com">willemjiang AT gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/willemjiang"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">willemjiang</span></a></li><li><a href="https://www.twitter.com/willemjiang"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">willemjiang</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>WillemJiang&#39;s blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

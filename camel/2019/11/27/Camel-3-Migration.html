@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Apache Camel 3.x升级指南 | Willem Jiang‘s Blog</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Apache Camel 3.x升级指南" />
+<meta name="author" content="Willem Jiang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Apache Camel 2.x 至 3.x 升级指南。" />
+<meta property="og:description" content="Apache Camel 2.x 至 3.x 升级指南。" />
+<link rel="canonical" href="https://willemjiang.github.io/camel/2019/11/27/Camel-3-Migration.html" />
+<meta property="og:url" content="https://willemjiang.github.io/camel/2019/11/27/Camel-3-Migration.html" />
+<meta property="og:site_name" content="Willem Jiang‘s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-11-27T12:27:36+08:00" />
+<script type="application/ld+json">
+{"description":"Apache Camel 2.x 至 3.x 升级指南。","author":{"@type":"Person","name":"Willem Jiang"},"@type":"BlogPosting","url":"https://willemjiang.github.io/camel/2019/11/27/Camel-3-Migration.html","headline":"Apache Camel 3.x升级指南","dateModified":"2019-11-27T12:27:36+08:00","datePublished":"2019-11-27T12:27:36+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://willemjiang.github.io/camel/2019/11/27/Camel-3-Migration.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://willemjiang.github.io/feed.xml" title="Willem Jiang‘s Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Willem Jiang‘s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <p>发表于2019-11-27 12:27:36 +0800</p>
+
+<ul class="section-nav">
+<li class="toc-entry toc-h3"><a href="#jdk支持">JDK支持</a></li>
+<li class="toc-entry toc-h3"><a href="#camel-core模块化">Camel-Core模块化</a></li>
+<li class="toc-entry toc-h3"><a href="#camelcontext的变化">CamelContext的变化</a></li>
+<li class="toc-entry toc-h3"><a href="#应用代码迁移修改">应用代码迁移修改</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#spring-boot-starter-maven-坐标的变化">Spring Boot starter Maven 坐标的变化。</a></li>
+<li class="toc-entry toc-h4"><a href="#main-class">Main class</a></li>
+<li class="toc-entry toc-h4"><a href="#xml-dsl修改">XML DSL修改</a></li>
+<li class="toc-entry toc-h4"><a href="#删除的组件">删除的组件</a></li>
+<li class="toc-entry toc-h4"><a href="#重命名的组件">重命名的组件</a></li>
+<li class="toc-entry toc-h4"><a href="#api变化">API变化</a></li>
+</ul>
+</li>
+</ul><p>年初的时候写过一篇有关<a href="https://willemjiang.github.io/apache/camel/2019/01/12/apache-camel-introducation.html">Camel 3.x 的介绍</a>。 Camel 3.0 在经历了4个里程版本以及3个RC版本之后，发布了<a href="https://camel.apache.org/blog/release-3-0-0.html">3.0正式版</a>。我想现在困扰大家最大的问题就是Camel 3.0 带来哪些变化呢？如果要从Camel 2.x 升级到 Camel 3.x需要注意哪些事情呢？ 其实社区开发者一直在更新一份叫做<a href="https://github.com/apache/camel/blob/master/docs/user-manual/modules/ROOT/pages/camel-3-migration-guide.adoc">升级指南</a>的文档，里面记录了Camel 3.x的最新修改。 下面我会结合我的理解把重点的内容翻译成中文展现给大家。</p>
+
+<h3 id="jdk支持">
+<a class="anchor" href="#jdk%E6%94%AF%E6%8C%81" aria-hidden="true"><span class="octicon octicon-link"></span></a>JDK支持</h3>
+
+<p>Camel 3 开始支持 Java 11， Camel 3 的早期版本还会继续支持Java 8， 但在后续的版本中会根据社区的发展会不再支持Java 8。</p>
+
+<p>在Java 11中， JDK缺省是不带JAXB模块依赖的，所以如果你需要使用XML DSL 或者是camel-jaxb 模块的话，需要在POM中添加相关JAXB的依赖。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;dependency&gt;
+    &lt;groupId&gt;javax.xml.bind&lt;/groupId&gt;
+    &lt;artifactId&gt;jaxb-api&lt;/artifactId&gt;
+    &lt;version&gt;2.3.1&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.sun.xml.bind&lt;/groupId&gt;
+    &lt;artifactId&gt;jaxb-core&lt;/artifactId&gt;
+    &lt;version&gt;2.3.0.1&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.sun.xml.bind&lt;/groupId&gt;
+    &lt;artifactId&gt;jaxb-impl&lt;/artifactId&gt;
+    &lt;version&gt;2.3.2&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></div></div>
+
+<h3 id="camel-core模块化">
+<a class="anchor" href="#camel-core%E6%A8%A1%E5%9D%97%E5%8C%96" aria-hidden="true"><span class="octicon octicon-link"></span></a>Camel-Core模块化</h3>
+
+<p>为了更好支持模块化，在Camel 3中， 将原有的camel-core模块分离成了以下12个子模块</p>
+
+<ul>
+  <li>camel-api</li>
+  <li>camel-base</li>
+  <li>camel-caffeine-lrucache</li>
+  <li>camel-cloud</li>
+  <li>camel-core</li>
+  <li>camel-jaxp</li>
+  <li>camel-main</li>
+  <li>camel-management-api</li>
+  <li>camel-management-impl</li>
+  <li>camel-support</li>
+  <li>camel-util</li>
+  <li>camel-util-json</li>
+</ul>
+
+<p>使用Maven的用户仍然可以通过采用原有的 camel-core的依赖自动获取以上模块的依赖， 当然你可以通过添加子模块的来减少系统对不必要的class的依赖。 同时我们也将其他在camel-core模块中的组件移出到其他的独立的模块：</p>
+
+<ul>
+  <li>camel-attachments</li>
+  <li>camel-bean</li>
+  <li>camel-browse</li>
+  <li>camel-controlbus</li>
+  <li>camel-dataformat</li>
+  <li>camel-dataset</li>
+  <li>camel-direct</li>
+  <li>camel-directvm</li>
+  <li>camel-file</li>
+  <li>camel-language</li>
+  <li>camel-log</li>
+  <li>camel-mock</li>
+  <li>camel-properties</li>
+  <li>camel-ref</li>
+  <li>camel-rest</li>
+  <li>camel-saga</li>
+  <li>camel-scheduler</li>
+  <li>camel-seda</li>
+  <li>camel-stub</li>
+  <li>camel-timer</li>
+  <li>camel-validator</li>
+  <li>camel-vm</li>
+  <li>camel-xpath</li>
+  <li>camel-xslt</li>
+  <li>camel-zip-deflater</li>
+</ul>
+
+<h3 id="camelcontext的变化">
+<a class="anchor" href="#camelcontext%E7%9A%84%E5%8F%98%E5%8C%96" aria-hidden="true"><span class="octicon octicon-link"></span></a>CamelContext的变化</h3>
+
+<ul>
+  <li>
+    <p>Camel 3.x 只支持一个应用一个的CamelContext设置，不在像Camel 2.x支持多个CamelContext设置。 这样在 <code class="highlighter-rouge">@EndpointInject</code>， <code class="highlighter-rouge">@Produce</code>， <code class="highlighter-rouge">@Consume</code>里面的 <em>context</em>属性都被去除掉了。 同样在camel-cdi中，已经不再支持<code class="highlighter-rouge">@ContextName</code>。   如果要实现多CamelContext的支持，需要自己管理CamelContext和相关组件的映射关系。</p>
+  </li>
+  <li>
+    <p>Camel 3.x 的有关全局属性的设置进行了修改， <em>getProperties</em> 已经修改为 <em>getGlobalOptions</em>。</p>
+  </li>
+  <li>
+    <p>Camel 3.x 对 JMX支持模块进行了调整，可以通过添加 camel-management-impl依赖的同时，采用以下代码获取ManagedCamelContext。</p>
+
+    <div class="language-java highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nc">ManagedCamelContext</span> <span class="n">managed</span> <span class="o">=</span>
+   <span class="n">camelContext</span><span class="o">.</span><span class="na">getExtension</span><span class="o">(</span><span class="nc">ManagedCamelContext</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><em>CamelContext</em> 中的API也做了一些简化，主要是提供与最终用户相关的API的支持。一些高阶使用场景例如SPI，与组件开发相关的API都被放在了 <em>ExtendedCamelContext</em> 中，大家可以通过adapt的方式获取相关的扩展CamelContext。</p>
+
+    <div class="language-java highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nc">ExtendedCamelContext</span> <span class="n">ecc</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">adapt</span><span class="o">(</span><span class="nc">ExtendedCamelContext</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>与目录（Catalog）相关的API都被移动到了这个新加的 <em>CatalogCamelContext</em> 接口中，大家可以通过下面的方式获取相关的实例</p>
+
+    <div class="language-java highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nc">CatalogCamelContext</span> <span class="n">ccc</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">adapt</span><span class="o">(</span><span class="nc">CatalogCamelContext</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>为了保持命名的一致性ModelCamelContext 中的 <em>loadRouteDefinitions</em> 修改为 <em>addRouteDefinitions</em>， <em>loadRestDefinitions</em>修改为 <em>addRestDefinitions</em>。 大家可以通过ModelHelper这个工具类来找到对应的load方法。</p>
+  </li>
+</ul>
+
+<h3 id="应用代码迁移修改">
+<a class="anchor" href="#%E5%BA%94%E7%94%A8%E4%BB%A3%E7%A0%81%E8%BF%81%E7%A7%BB%E4%BF%AE%E6%94%B9" aria-hidden="true"><span class="octicon octicon-link"></span></a>应用代码迁移修改</h3>
+
+<h4 id="spring-boot-starter-maven-坐标的变化">
+<a class="anchor" href="#spring-boot-starter-maven-%E5%9D%90%E6%A0%87%E7%9A%84%E5%8F%98%E5%8C%96" aria-hidden="true"><span class="octicon octicon-link"></span></a>Spring Boot starter Maven 坐标的变化。</h4>
+<p>在Camel3 中， 有关Spring Boot Starters的 <code class="highlighter-rouge">groupId</code> 已经由 <code class="highlighter-rouge">org.apache.camel</code> 改变成 <code class="highlighter-rouge">org.apache.camel.springboot</code>。 大家升级的时候需要注意这点变化。</p>
+
+<h4 id="main-class">
+<a class="anchor" href="#main-class" aria-hidden="true"><span class="octicon octicon-link"></span></a>Main class</h4>
+<p>Camel的<code class="highlighter-rouge">Main</code>类已经有<code class="highlighter-rouge">camel-core</code>转移至<code class="highlighter-rouge">camel-main</code>模块中， 所以升级的时候请注意更新相关依赖。</p>
+
+<h4 id="xml-dsl修改">
+<a class="anchor" href="#xml-dsl%E4%BF%AE%E6%94%B9" aria-hidden="true"><span class="octicon octicon-link"></span></a>XML DSL修改</h4>
+
+<ul>
+  <li>在<code class="highlighter-rouge">&lt;setHeader&gt;</code> 中的 <em>headerName</em> 修改为 <em>name</em>
+</li>
+  <li>在<code class="highlighter-rouge">&lt;setProperty&gt;</code> 中的 <em>propertyName</em> 修改为 <em>name</em>
+</li>
+  <li>在<code class="highlighter-rouge">&lt;aggregate&gt;</code> 中的有关完成情况判断的表达式添加了 <em>Expression</em> 的后缀来避免命名冲突， <em>completionSize</em> 修改为 <em>completionSizeExpression</em>， <em>completionTimeout</em> 修改为 <em>completionTimeoutExpression</em>
+</li>
+  <li>在自定义负载均衡模式的<code class="highlighter-rouge">&lt;custom&gt;</code> 修改为<code class="highlighter-rouge">&lt;customLoadBalance&gt;</code>
+</li>
+  <li>在<code class="highlighter-rouge">&lt;secureXML&gt;</code> 与XML Security 相关的秘钥参数定义属性由 <em>keyOrTrustStoreParametersId</em> 修改为 <em>keyOrTrustStoreParametersRef</em>
+</li>
+  <li>Zip数据格式定义由 <code class="highlighter-rouge">&lt;zipFile&gt;</code> 修改为<code class="highlighter-rouge">&lt;zipfile&gt;</code>
+</li>
+  <li>为了支持多种熔断方式<code class="highlighter-rouge">&lt;hystrix&gt;</code>替换成 <code class="highlighter-rouge">&lt;circuitBreaker&gt;</code>
+</li>
+</ul>
+
+<h4 id="删除的组件">
+<a class="anchor" href="#%E5%88%A0%E9%99%A4%E7%9A%84%E7%BB%84%E4%BB%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>删除的组件</h4>
+<p>Camel3移除了多Camel2已经废弃的组件,例如<code class="highlighter-rouge">camel-http</code>, <code class="highlighter-rouge">camel-hdfs</code>, <code class="highlighter-rouge">camel-mina</code>, <code class="highlighter-rouge">camel-mongodb</code>, <code class="highlighter-rouge">camel-netty</code>, <code class="highlighter-rouge">camel-netty-http</code>, <code class="highlighter-rouge">camel-quartz</code> 以及 <code class="highlighter-rouge">camel-rxjava</code>，转而由新版本所代替，详细请参加下面的重命名组件。</p>
+<ul>
+  <li>camel-jibx组件 因为不支持JDK8 而被移除</li>
+  <li>camel-boon 因为不能再支持JDK9及以后的版本而被移除</li>
+  <li>camel-jetty 不在提供producer功能， 可以使用camel-http组件(原名 camel-http4)来发送HTTP请求</li>
+  <li>camel-zookeeper 中的 route policy功能已经删除， 请使用ZookeeperClusterService 或者 camel-zookeeper-master 组件。</li>
+  <li>camel-script 因为JDK11 不再支持<code class="highlighter-rouge">java.script</code>, camel-script 组件已经被移除。</li>
+  <li>camel-twitter 中的 twitter-streaming 组件因为Twitter的Stream API已经废弃所以删除。</li>
+</ul>
+
+<h4 id="重命名的组件">
+<a class="anchor" href="#%E9%87%8D%E5%91%BD%E5%90%8D%E7%9A%84%E7%BB%84%E4%BB%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>重命名的组件</h4>
+
+<p>以往Camel为了支持多个版本的第三方组件， 在组件名后还加入的版本号， 在Camel3中对这些新版本的组件进行了重命名，将组件名中的版本号去掉，以替换原有的老版本组件。</p>
+
+<ul>
+  <li>camel-test 组件重命名为 camel-dataset-test， 并且从camel-core 移到 camel-dateset 模块中。</li>
+  <li>camel-http4 组件重命名为camel-http组件， 支持http以及https两种协议。</li>
+  <li>camel-hdfs2 组件重命名为camel-hdfs组件， 支持hdfs 协议。</li>
+  <li>camel-mina2 组件重命名为camel-mina组件， 支持mina协议。</li>
+  <li>camel-mongodb3 组件重命名为camel-mongodb， 支持的协议为mongodb。</li>
+  <li>camel-netty4 组件重命名为 camel-netty，支持的协议为netty。</li>
+  <li>camel-netty4-http 组件重命名为 camel-netty-http, 支持协议为netty-http。</li>
+  <li>camel-quartz2 组件改名为 camel-quartz，支持的协议为 quartz。</li>
+  <li>camel-rxjava2 组件重命名为 camel-rxjava。</li>
+  <li>camel-jetty9 组件重命名为 camel-jetty, 支持协议为jetty。</li>
+</ul>
+
+<h4 id="api变化">
+<a class="anchor" href="#api%E5%8F%98%E5%8C%96" aria-hidden="true"><span class="octicon octicon-link"></span></a>API变化</h4>
+<ul>
+  <li>
+    <p>Message Attachment API</p>
+
+    <p>有关处理附件的API从<code class="highlighter-rouge">org.apache.camel.Message</code> 转移到新的<code class="highlighter-rouge">camel-attachments</code>模块中的<code class="highlighter-rouge">org.apache.camel.attachment.AttachementMessage</code>。
+大家可以通过以下的代码来访问附件信息。</p>
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  AttachementMessage am = exchange.getMessage(AttachmentMessage.class);
+  am.addAttachement("myAtt", new DataHandler(...));
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Message Fault API</p>
+
+    <p>由于Fault API只用于处理SOAP-WS fault消息，因此在<code class="highlighter-rouge">org.apache.camel.Message</code>中已经把fault API去掉了。 如果想在 <code class="highlighter-rouge">camel-cxf</code>以及<code class="highlighter-rouge">camel-spring-ws</code>组件中处理Fault消息的话，需要在相关组件或者节点层面打开<code class="highlighter-rouge">handleFault</code>参数来进行处理。</p>
+  </li>
+  <li>
+    <p>Message getOut</p>
+
+    <p>hasOut和getOut这两个方法在Camel 3中已经被标准为遗弃方法， 推荐使用<code class="highlighter-rouge">Message</code>中提供的getMessage方法来获取需要处理的消息。（为了提供向前兼容性的保证，在Camel内部还是会针对区分了IN,OUT message的场景还是会使用支持的方法区分Out Message）。</p>
+  </li>
+  <li>
+    <p>ActiveMQ</p>
+
+    <p><code class="highlighter-rouge">activemq-camel</code> 已从ActiveMQ迁入到Camel， 你可以使用<code class="highlighter-rouge">camel-activemq</code>组件与ActiveMQ交互，对应的组件名也从<code class="highlighter-rouge">org.apache.activemq.camel.comopnent.ActiveMQComponent</code>改名为<code class="highlighter-rouge">org.apache.camel.component.activemq.ActiveMQComponent</code>。</p>
+  </li>
+  <li>
+    <p>API迁移变化</p>
+
+    <p>在升级到Camel3 的过程可能会出现相关包迁移的问题，大家可以通过查找<a href="https://github.com/apache/camel/blob/master/docs/user-manual/modules/ROOT/pages/camel-3-migration-guide.adoc#moved-apis">相关文档</a>获取详细信息。</p>
+  </li>
+</ul>
+
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Willem Jiang‘s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Willem Jiang</li><li><a class="u-email" href="mailto:willemjiang AT gmail.com">willemjiang AT gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/willemjiang"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">willemjiang</span></a></li><li><a href="https://www.twitter.com/willemjiang"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">willemjiang</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>WillemJiang&#39;s blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

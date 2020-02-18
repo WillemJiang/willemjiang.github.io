@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>红帽如何构建OpenShift4 | Willem Jiang‘s Blog</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="红帽如何构建OpenShift4" />
+<meta name="author" content="Willem Jiang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="本文介绍红帽是如何已上游优先的方式进行OpenShift4产品的" />
+<meta property="og:description" content="本文介绍红帽是如何已上游优先的方式进行OpenShift4产品的" />
+<link rel="canonical" href="https://willemjiang.github.io/redhat/2019/02/23/how-does-redhat-develop-openshift4.html" />
+<meta property="og:url" content="https://willemjiang.github.io/redhat/2019/02/23/how-does-redhat-develop-openshift4.html" />
+<meta property="og:site_name" content="Willem Jiang‘s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-02-23T22:27:36+08:00" />
+<script type="application/ld+json">
+{"description":"本文介绍红帽是如何已上游优先的方式进行OpenShift4产品的","author":{"@type":"Person","name":"Willem Jiang"},"@type":"BlogPosting","url":"https://willemjiang.github.io/redhat/2019/02/23/how-does-redhat-develop-openshift4.html","headline":"红帽如何构建OpenShift4","dateModified":"2019-02-23T22:27:36+08:00","datePublished":"2019-02-23T22:27:36+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://willemjiang.github.io/redhat/2019/02/23/how-does-redhat-develop-openshift4.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://willemjiang.github.io/feed.xml" title="Willem Jiang‘s Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Willem Jiang‘s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <p>发表于2019-02-23 22:27:36 +0800</p>
+
+<p>众所周知，红帽的OpenShift是建立在Kubernetes 基础之上的， 但是红帽是如何将上游开发的Kubernetes整合在OpenShift之中的？ 很多人对这个问题都很感兴趣， 最近在伦敦举办的<a href="https://commons.openshift.org/">OpenShift Commons</a>大会上， 红帽OpenShift产品经理 Mike Barrett向我们介绍OpenShift产品开发的细节。</p>
+
+<p>本文对Mike的演讲前半部分进行了节选翻译，试图向大家展示红帽是如何在社区项目基础上构建企业级软件产品的，大家可以通过<a href="https://www.youtube.com/watch?v=dYcArJHEBZ8">此链接</a>观看完整的演讲内容。</p>
+
+<p>在通常情况下每一个OpenShift版本发布会经历4到5个Sprint，每个Sprint会持续3周， 这是一个比较快的发布周期。一般来说我们会用3个Sprint来修复bug，这样看来一般我们会有4个Sprint的时间来做下一个版本的规划。如下图所示，OpenShift的路线图基本上是按照季度来进行规划的。</p>
+
+<p><img src="https://willemjiang.github.io/assets/images/openshift4/OpenShiftRoadMap.png" alt="OpenShiftRoadMap" /></p>
+
+<p>对于上游Kubernetes的使用，基本上是和大家一样直接使用上游的产品，我们的升级周期很快。在一个OpenShift的产品开发周期内，我们会对上游Kubernetes进行两次rebase操作， 由于OpenShift有很多第三依赖， 在QE阶段，我们会一直关注Kubernetes的维护分支，通过Cherry Pick的方式将重要的bug fix移植到我们的产品分支上。 如果我们在QE阶段发现了bug， 我们会先在Kubernetes上游修复Bug，然后再将bug修复移植到我们产品分支中。 如果这个时候社区正在开发Kubernetes 1.12， 我们会先修复Kubernetes 1.12的bug，然后将相关补丁移植到我们现在基于Kubernetes 1.11 开发的版本上。 这样可以保证我们随时可以从社区开发的Kubernetes获取可用的版本（不用再升级的Kubernetes的时候重新再打补丁）。</p>
+
+<p><img src="https://willemjiang.github.io/assets/images/openshift4/ReleaseAndFix.png" alt="ReleaseAndFix" /></p>
+
+<p>更有意思的是随着时间的推荐，其他与OpenShift相关的模块也在不断发展，例如与OpenShift相关的容器实现RHEL也一直在修复Bug，修复CVE问题，不断向前发展，所以我们也在不断地rebase相关RHEL版本。同时我们还有一大票正在开发的中间件、运行时以及开发框架，因此我们需要持续集成相关的产品，保证系统稳定。这就要求我们的开发团队之间需要不断地获取到相关的组件并且进行集成测试。</p>
+
+<p><img src="https://willemjiang.github.io/assets/images/openshift4/ContainerRefreshes.png" alt="ContainerRefreshes" /></p>
+
+<p>OpenShift的构建系统(OpenShift Build System) 每天会产生400多个容器，我们会在400个容器之上构建我们的OpenShift产品，虽然我们直接从社区获取了Kubernetes，但是我们依托了这个构建系统来帮助我们构建企业级的Kubernetes，这是红帽构建企业级产品的特有价值。 我们的开发者每天会在Kubernetes上游贡献代码，目前我们是Kubernetes的第二大贡献者。 同时我们的开发者还是相关Kubernetes SIG的领导者，我们没有专门选择SIG方向，这些方向是代表了客户选择的，是由我们的客户每天向我们咨询的问题或者升级需要我们解决的问题中来。这些方向和生产系统密切相关，其中不但有认证相关的，也有与存储相关的，还有有和网络相关的内容，这些都是我们的客户在日常使用Kubernetes需要我们解决的实际问题。</p>
+
+<p><img src="https://willemjiang.github.io/assets/images/openshift4/SIGLeadership.png" alt="SIG Leadership" /></p>
+
+<p>在此之外我们还做了很多与集成相关的工作。当你安装完OpenShift，你可以获取到非常完备的网络组件，让你能够很方便地与你的边缘网络进行集成；你还可以获得许多与企业应用部署相关的支持工具，同时我们还提供了很多缺省的安全支持， 以及缺省的Jenkins支持。</p>
+
+<p><img src="https://willemjiang.github.io/assets/images/openshift4/AddOns.png" alt="OpenShift AddOns" /></p>
+
+<p>那OpenShift4基石是什么？ 这里我想和大家分享几个数字。全球有超过1000的企业用户在免费使用OpenShift；32000 这是来自于OpenShift3的用户支持case数；17000+，这是红帽工程师在Kubernetes社区中的提交次数；500+，这是每年我们的咨询团队与全球3000强企业用户交互数；122，这是我们的工程团队在OpenShift中进行的各种发布的总和；250M+，这是我们花在收购各种用来完善OpenShift相关的技术所花费的美元（红帽有收购商业公司技术，并将其开源用来回馈社区的传统）；4000,这是用户在OpenShift.com上每天创建的pod数。 基于这些积累的经验我们决定在以下几个方面加强对OpenShift4的投资。</p>
+
+<p><img src="https://willemjiang.github.io/assets/images/openshift4/OpenShift4.0Thems.png" alt="OpenShift4" /></p>
+
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Willem Jiang‘s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Willem Jiang</li><li><a class="u-email" href="mailto:willemjiang AT gmail.com">willemjiang AT gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/willemjiang"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">willemjiang</span></a></li><li><a href="https://www.twitter.com/willemjiang"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">willemjiang</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>WillemJiang&#39;s blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

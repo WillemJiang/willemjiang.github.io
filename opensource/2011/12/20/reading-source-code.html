@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>如何研读开源项目代码 | Willem Jiang‘s Blog</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="如何研读开源项目代码" />
+<meta name="author" content="Willem Jiang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="如何从纷繁复杂的源代码中获取你想要的东西，我们可以从读测试代码入手！" />
+<meta property="og:description" content="如何从纷繁复杂的源代码中获取你想要的东西，我们可以从读测试代码入手！" />
+<link rel="canonical" href="https://willemjiang.github.io/opensource/2011/12/20/reading-source-code.html" />
+<meta property="og:url" content="https://willemjiang.github.io/opensource/2011/12/20/reading-source-code.html" />
+<meta property="og:site_name" content="Willem Jiang‘s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2011-12-20T07:36:20+08:00" />
+<script type="application/ld+json">
+{"description":"如何从纷繁复杂的源代码中获取你想要的东西，我们可以从读测试代码入手！","author":{"@type":"Person","name":"Willem Jiang"},"@type":"BlogPosting","url":"https://willemjiang.github.io/opensource/2011/12/20/reading-source-code.html","headline":"如何研读开源项目代码","dateModified":"2011-12-20T07:36:20+08:00","datePublished":"2011-12-20T07:36:20+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://willemjiang.github.io/opensource/2011/12/20/reading-source-code.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://willemjiang.github.io/feed.xml" title="Willem Jiang‘s Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Willem Jiang‘s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <p>发表于2011-12-20 07:36:20 +0800</p>
+
+<p>今天在微博上看到庄表伟在知呼上回答的<a href="http://www.zhihu.com/question/19637879">如何更有效地学习开源项目的代码</a>？</p>
+
+<p>我很认同他总结的 “学习开源，就尽可能在代码里找答案，而不是在代码之外找答案，那些都是二手的，而且很可能是不准确的。”  但是如何读好，读懂代码，我这边还是有不同的认识。</p>
+
+<p> </p>
+
+<h3 id="1-下载完整的工程文件">1. 下载完整的工程文件</h3>
+
+<p>   </p>
+
+<p>需要从代码管理库下载完整的源代码，而不是简单的源代码文件包或者source.jar。这样做有很多好处，一个是你可以获取代码的修改记录，还有你可以获取到完整的测试代码，当你要提交patch的时候，你可以借助版本管理工具生成针对不同版本的patch。</p>
+
+<p> </p>
+
+<h3 id="2-示例代码与单元测试">2. 示例代码与单元测试</h3>
+
+<p>    示例代码可以帮助你学会使用相关开源项目的API。很多朋友在使用开源项目的时候遇到一个小问题就发信给开发者要这样或者那样的示例代码，其实他们没有发现大部分的开源项目在开发的过程中，为了验证其实现的功能，都会写很多单元测试代码。这些代码其实非常好的示例代码。可能是下源码，建工程会花费你几个小时的时间，但是如果你想深入了解开源项目的话，这点投资还是很有价值的。</p>
+
+<p>     其实读单元测试的好处太多了，这里简单给大家列一下：</p>
+
+<ul>
+  <li>
+    <p>由于一个单元测试一般也就是几个小时的开发工作量，你很容易就能读懂相关的代码。</p>
+  </li>
+  <li>
+    <p>每个单元测试都是可以独立运行的，这样节省你跟踪调试的时间。</p>
+  </li>
+  <li>
+    <p>单元测试在很大程度定义了软件的功能，可以帮助你快速掌握项目的相关API。</p>
+  </li>
+  <li>
+    <p>如果你修改的开源项目的代码，你可以通过修改单元测试来验证你的修改是否正确。</p>
+
+    <p>​</p>
+  </li>
+</ul>
+
+<h3 id="3架构文档">3.架构文档</h3>
+
+<p>     其实大部分的开源项目都会对其架构有一定的描述，这些描述可能会有点过时，但是通读一下会让你项目有一个比较深入的认识。这样做好比是让你对北京的二环，三环，四环，五环有个大体的认识。这样在你要对代码的某块内容进行详细研究的时候（例如找中关村的位置的时候，知道西北四环）就能很快定位了。</p>
+
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Willem Jiang‘s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Willem Jiang</li><li><a class="u-email" href="mailto:willemjiang AT gmail.com">willemjiang AT gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/willemjiang"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">willemjiang</span></a></li><li><a href="https://www.twitter.com/willemjiang"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">willemjiang</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>WillemJiang&#39;s blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <description>WillemJiang's blog</description>
+    <link>https://willemjiang.github.io</link>
+    <atom:link href="https://willemjiang.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Apache Camel 3.x升级指南</title>
+        <description>Apache Camel 2.x 至 3.x 升级指南。</description>
+        <pubDate>Wed, 27 Nov 2019 12:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//camel/2019/11/27/Camel-3-Migration.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//camel/2019/11/27/Camel-3-Migration.html</guid>
+      </item>
+    
+      <item>
+        <title>上游优先地开发</title>
+        <description>介绍为什么要采用上游优先的方式进行开发，以及这样做的好处</description>
+        <pubDate>Tue, 29 Oct 2019 12:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//opensource/2019/10/29/UpStream-first.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//opensource/2019/10/29/UpStream-first.html</guid>
+      </item>
+    
+      <item>
+        <title>Apache ServiceComb Pack 0.5.0 新特性</title>
+        <description>Apache ServiceComb Pack 0.5.0 新特性介绍</description>
+        <pubDate>Tue, 27 Aug 2019 12:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//servicecomb/pack/2019/08/27/ServiceComb-Pack-0.5.0.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//servicecomb/pack/2019/08/27/ServiceComb-Pack-0.5.0.html</guid>
+      </item>
+    
+      <item>
+        <title>Apache Camel Spring Boot使用说明</title>
+        <description>Apache Camel借助Spring Boot提供了一套微服务组合服务的开发框架。</description>
+        <pubDate>Mon, 05 Aug 2019 12:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//camel/2019/08/05/Camel-SpringBoot.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//camel/2019/08/05/Camel-SpringBoot.html</guid>
+      </item>
+    
+      <item>
+        <title>使用Quarkus开发Java云原生应用</title>
+        <description>本文介绍红帽最近开源的Quarkus项目，该项目通过借助GraalVM提供的AOT 技术，可以将大多数的Java代码在不做修改的情况下转换成本地可执行程序，从而降低系统的启动时间已经内存消耗。</description>
+        <pubDate>Sun, 04 Aug 2019 20:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//quarkus/2019/08/04/Quarkus-introduction.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//quarkus/2019/08/04/Quarkus-introduction.html</guid>
+      </item>
+    
+      <item>
+        <title>如何在minikube上安装camel-k</title>
+        <description>本文主要介绍在minikube上如何安装camel-k</description>
+        <pubDate>Sat, 06 Jul 2019 20:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//camel/2019/07/06/How-to-install-camel-k-in-minikub.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//camel/2019/07/06/How-to-install-camel-k-in-minikub.html</guid>
+      </item>
+    
+      <item>
+        <title>如何维护n年前写的代码</title>
+        <description>要写出机器理解的代码其实不难，但是要写出大部分人能够理解并且易于维护的代码就很有挑战了。因为Apache Camel这个项目已经发展了12年，有大量的历史代码还在发挥着自己的作用，这就意味着我们需要一直维护这些有十多年历史的代码。 今天我这篇文章就是给大家分享一些避免给自己或者别人挖坑的心得，希望能对大家有所帮助。</description>
+        <pubDate>Sat, 04 May 2019 20:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//opensource/2019/05/04/How-to-maintain-n-years-old-code.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//opensource/2019/05/04/How-to-maintain-n-years-old-code.html</guid>
+      </item>
+    
+      <item>
+        <title>Camel基本概念</title>
+        <description>介绍了Camel的基本概念</description>
+        <pubDate>Sun, 28 Apr 2019 20:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//apache/camel/2019/04/28/Basic-Camel-Concepts.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//apache/camel/2019/04/28/Basic-Camel-Concepts.html</guid>
+      </item>
+    
+      <item>
+        <title>3月23日 Camel演讲</title>
+        <description>3月23日参加京东技术论坛，介绍了Apache Camel以及Camel在云化应用中的一些问题。</description>
+        <pubDate>Sat, 23 Mar 2019 20:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//apache/camel/2019/03/23/Riding-Camel-On-Cloud.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//apache/camel/2019/03/23/Riding-Camel-On-Cloud.html</guid>
+      </item>
+    
+      <item>
+        <title>红帽如何构建OpenShift4</title>
+        <description>本文介绍红帽是如何已上游优先的方式进行OpenShift4产品的</description>
+        <pubDate>Sat, 23 Feb 2019 22:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//redhat/2019/02/23/how-does-redhat-develop-openshift4.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//redhat/2019/02/23/how-does-redhat-develop-openshift4.html</guid>
+      </item>
+    
+      <item>
+        <title>Apache Camel介绍</title>
+        <description>Apache Camel作为集成项目的利器已经被业界广泛采用，本文将从使用场景以及背后的故事介绍ApacheCamel，最后向大家介绍Apache Camel 3.x的最新进展。</description>
+        <pubDate>Sun, 13 Jan 2019 04:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//apache/camel/2019/01/13/apache-camel-introducation.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//apache/camel/2019/01/13/apache-camel-introducation.html</guid>
+      </item>
+    
+      <item>
+        <title>基于服务的分布式事务(下篇)</title>
+        <description>在本文中我们先从分布式事务场景入手，采用交互图的方式，向大家介绍分布式Saga以及TCC分布式事务协调协议交互，最后结合ServiceComb Pack所提供的示例向大家介绍如何编写Saga以及TCC的应用代码。</description>
+        <pubDate>Fri, 11 Jan 2019 04:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//servicecomb/pack/2019/01/11/distributed-transaction-of-services-2.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//servicecomb/pack/2019/01/11/distributed-transaction-of-services-2.html</guid>
+      </item>
+    
+      <item>
+        <title>基于服务的分布式事务(上篇)</title>
+        <description>本文从分布式事务需要解决的问题入手，向大家介绍了建立在补充基础之上的基于服务的分布式事务的解决思路。接下来我们结合具体的示例介绍了完美的补偿（TCC）和非完美补偿（Saga）两种分布式事务协调协议，最后结合ServiceComb Pack的实现原理详细介绍了ServiceComb Pack的架构实现。</description>
+        <pubDate>Fri, 11 Jan 2019 04:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//servicecomb/pack/2019/01/11/distributed-transaction-of-services-1.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//servicecomb/pack/2019/01/11/distributed-transaction-of-services-1.html</guid>
+      </item>
+    
+      <item>
+        <title>专访Zipkin项目Leader Adrain Cole</title>
+        <description>最近有幸通过Email采访了Zipkin项目的主要开发维护人员 Adrian Cole， 和他聊了一下有关 Zipkin项目的背景以及用户是如何使用Zipkin构建分布式追踪系统。特别值得一提的是Adrian一直在世界各地举办分布式追踪的workshop，通过sites（局点）文档收集到了大量用户在使用Zipkin构建分布式追踪系统一手资料。</description>
+        <pubDate>Thu, 06 Dec 2018 04:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//zipkin/2018/12/06/email-interview-of-Adrian-Cole.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//zipkin/2018/12/06/email-interview-of-Adrian-Cole.html</guid>
+      </item>
+    
+      <item>
+        <title>为公众利益而生</title>
+        <description>近日Apache ServiceComb项目成功从Apache孵化器毕业成为Apache顶级项目。为了让更多的人了解Apache软件基金会，我在相关资料的基础上结合自己的实践写了这篇有关Apache软件基金会的文章，希望能帮助大家进一步了解Apache软件基金会，也欢迎大家给我发邮件与我交流。</description>
+        <pubDate>Sun, 21 Oct 2018 06:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//opensource/2018/10/21/asf-introduction.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//opensource/2018/10/21/asf-introduction.html</guid>
+      </item>
+    
+      <item>
+        <title>Apache Camel 2.22.0发布了</title>
+        <description>Apache Camel 2.22.0 发布了，有哪些特性值的关注？</description>
+        <pubDate>Mon, 16 Jul 2018 01:34:04 +0800</pubDate>
+        <link>https://willemjiang.github.io//camel/2018/07/16/camel-2220-was-released.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//camel/2018/07/16/camel-2220-was-released.html</guid>
+      </item>
+    
+      <item>
+        <title>Saga分布式事务解决方案与实践</title>
+        <description>2018年QConBeijing Saga分布式事务解决方案与实践演讲实录</description>
+        <pubDate>Thu, 26 Apr 2018 00:00:00 +0800</pubDate>
+        <link>https://willemjiang.github.io//presentation/2018/04/26/distributed-transactions-saga.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//presentation/2018/04/26/distributed-transactions-saga.html</guid>
+      </item>
+    
+      <item>
+        <title>开源社区的交流准则</title>
+        <description>开源社区的交流是公开的建立在志愿基础上的交流，为了能更好的融入到开源社区，我们需要注意我们的日常行为。</description>
+        <pubDate>Thu, 01 Dec 2016 00:52:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//opensource/2016/12/01/opensource-code-of-conduct.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//opensource/2016/12/01/opensource-code-of-conduct.html</guid>
+      </item>
+    
+      <item>
+        <title>如何排查Netty内存泄露问题？</title>
+        <description>最近我帮着处理了一个有关Camel Netty4内存泄露的问题，起初只是帮着Review相关的PR，随着工作内容的深入发现了一个暗藏有两年多的内存泄露的Bug。整个除虫的过程很有意思，其中涉及到了在代码里面捕捉Log事件，利用Netty的内存检测工具寻找内存使用的问题等等。</description>
+        <pubDate>Thu, 17 Nov 2016 02:21:34 +0800</pubDate>
+        <link>https://willemjiang.github.io//java/2016/11/17/netty-resource-leak-detector.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//java/2016/11/17/netty-resource-leak-detector.html</guid>
+      </item>
+    
+      <item>
+        <title>Java二进制兼容问题</title>
+        <description>代码库在演进的过程中，或多或少都存在方法，成员变量，以及包的修改。这些修改或多或少会对类库的调用代码产生一些影响。</description>
+        <pubDate>Tue, 15 Nov 2016 23:56:42 +0800</pubDate>
+        <link>https://willemjiang.github.io//java/2016/11/15/java-binary-compatibility.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//java/2016/11/15/java-binary-compatibility.html</guid>
+      </item>
+    
+  </channel>
+</rss>

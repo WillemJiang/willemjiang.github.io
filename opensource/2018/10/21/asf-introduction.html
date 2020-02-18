@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>为公众利益而生 | Willem Jiang‘s Blog</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="为公众利益而生" />
+<meta name="author" content="Willem Jiang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="近日Apache ServiceComb项目成功从Apache孵化器毕业成为Apache顶级项目。为了让更多的人了解Apache软件基金会，我在相关资料的基础上结合自己的实践写了这篇有关Apache软件基金会的文章，希望能帮助大家进一步了解Apache软件基金会，也欢迎大家给我发邮件与我交流。" />
+<meta property="og:description" content="近日Apache ServiceComb项目成功从Apache孵化器毕业成为Apache顶级项目。为了让更多的人了解Apache软件基金会，我在相关资料的基础上结合自己的实践写了这篇有关Apache软件基金会的文章，希望能帮助大家进一步了解Apache软件基金会，也欢迎大家给我发邮件与我交流。" />
+<link rel="canonical" href="https://willemjiang.github.io/opensource/2018/10/21/asf-introduction.html" />
+<meta property="og:url" content="https://willemjiang.github.io/opensource/2018/10/21/asf-introduction.html" />
+<meta property="og:site_name" content="Willem Jiang‘s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-21T06:27:36+08:00" />
+<script type="application/ld+json">
+{"description":"近日Apache ServiceComb项目成功从Apache孵化器毕业成为Apache顶级项目。为了让更多的人了解Apache软件基金会，我在相关资料的基础上结合自己的实践写了这篇有关Apache软件基金会的文章，希望能帮助大家进一步了解Apache软件基金会，也欢迎大家给我发邮件与我交流。","author":{"@type":"Person","name":"Willem Jiang"},"@type":"BlogPosting","url":"https://willemjiang.github.io/opensource/2018/10/21/asf-introduction.html","headline":"为公众利益而生","dateModified":"2018-10-21T06:27:36+08:00","datePublished":"2018-10-21T06:27:36+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://willemjiang.github.io/opensource/2018/10/21/asf-introduction.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://willemjiang.github.io/feed.xml" title="Willem Jiang‘s Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Willem Jiang‘s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <p>发表于2018-10-21 06:27:36 +0800</p>
+
+<ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#apache软件基金会介绍">Apache软件基金会介绍</a></li>
+<li class="toc-entry toc-h2"><a href="#加入到asf有什么好处">加入到ASF有什么好处？</a></li>
+<li class="toc-entry toc-h2"><a href="#asf的做事方式">ASF的做事方式</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#社区大于代码-community-over-code">社区大于代码 Community Over Code</a></li>
+<li class="toc-entry toc-h3"><a href="#开放的协作方式-open-and-cooperation">开放的协作方式 Open and Cooperation</a></li>
+<li class="toc-entry toc-h3"><a href="#精英管理-meritocracy">精英管理 Meritocracy</a></li>
+<li class="toc-entry toc-h3"><a href="#多样性与共识决策">多样性与共识决策</a></li>
+<li class="toc-entry toc-h3"><a href="#apache-孵化器">Apache 孵化器</a></li>
+</ul>
+</li>
+</ul><p>近日Apache ServiceComb项目成功从Apache孵化器毕业成为Apache顶级项目。为了让更多的人了解Apache软件基金会， 我在相关资料的基础上结合自己的实践写了这篇有关Apache软件基金会的文章，希望能帮助大家进一步了解Apache软件基金会，也欢迎大家给我发邮件与我交流。</p>
+
+<h2 id="apache软件基金会介绍">
+<a class="anchor" href="#apache%E8%BD%AF%E4%BB%B6%E5%9F%BA%E9%87%91%E4%BC%9A%E4%BB%8B%E7%BB%8D" aria-hidden="true"><span class="octicon octicon-link"></span></a>Apache软件基金会介绍</h2>
+
+<p>Apache软件基金会是一个成立于1999年的非盈利慈善组织，英文名称 Apache Software Foundation，简称 ASF，最早源于开发Apache HTTP服务器的一个爱好者组织“Apache组织”。经过近20年的发展，Apache软件基金会已成为世界上最大的开源基金会，负责监管350多个免费的企业级项目和1.9亿多行的代码，它们作为主干支撑着全球广泛使用的应用程序。Apache软件基金会屡获殊荣的“The Apache Way”精英管理流程让730名独立会员和6800名代码提交者在人工智能/深度学习、大数据、构建管理、云计算，内容、DevOps、物联网/边缘、移动化、服务器、Web框架等方面进行合作和创新。</p>
+
+<p>ASF的使命是：“Provide software for the public good”，为公众利益提供软件。ASF的项目全部是以Apache软件许可协议(ASL)发布的自由开源软件，任何人都可以免费使用，同时ASL也是一个非常宽松且商业友好的协议。根据这个使命，ASF作为一个独立的法律实体，不接受商业赞助，只接受企业和个人的无偿捐赠，并确保这些捐赠用于公益。Apache软件基金会的纯志愿者性质及其社区所遵循的精英管理Meritocracy模式，构成了Apache软件中立、可信任的基石。</p>
+
+<p>因为站在维护公众的利益的视角上， Apache软件基金会非常强调厂商中立，其项目的代码提交权限，以及项目管理委员会权限都是个人形式体现，与参与者所在的公司无关。这样吸引了大量的厂商将其开源项目捐献给基金会，并雇佣相关的开发者参与为Apache软件基金会项目开发。同时商业公司可以依托Apache项目开发商业产品进行盈利。</p>
+
+<h2 id="加入到asf有什么好处">
+<a class="anchor" href="#%E5%8A%A0%E5%85%A5%E5%88%B0asf%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%A4%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>加入到ASF有什么好处？</h2>
+
+<p>开源项目竞争异常激烈，想要取得更多关注和资源，必须和大约2550万开源项目竞争。得益于业界广泛应用的商业友好的Apache软件许可协议（ASL），Apache软件基金会旗下的解决方案获得广泛传播。开源生态中，并没有销售软件的行为，而更多的是表达想法，并利用市场来换取非常有价值的内容。这些内容包括人们所贡献的实践、金钱、才华以及努力。但是，这一切都是以人们能够了解开源项目及其价值为前提的。Apache.org每周流量超过3500万，镜像下载量超过900w，每天都影响50%以上的互联网基础设施。Apache软件基金会举办的社区盛会、马拉松、及全球路演，让每个成员开源项目在世界面前崭露头角。 加入最具影响力的Apache软件基金会，几乎成为开源项目获得更多信任及支持的最佳选择。</p>
+
+<p>不同于闭源、单一公司主导的软件开发模式，在开源项目中，与其他人合作非常重要，即使是竞争对手也会相互合作。”coopetion”(cooperation+competition)一词就是描述在开源世界中，竞争对手通过密切合作来进行创新。Apache软件基金会强调厂商中立，加入Apache软件基金会可以让你与竞争对手一道集中有限的资源进行技术攻关解决技术难题，于此同时大家可以共享技术成果。基于这种模式，竞争对手之间可以在产品的附加价值上体现差异化来进行竞争，例如培训、服务、支持或收费功能。虽然Apache软件基金会不直接参与这样的竞争，但这确实是Apache之道为参与厂商带来的一个好处。</p>
+
+<p>此外，选择合适的开源软件许可证是一个专业性很强的工作，Apache软件基金会除了提供了业界广泛采用的商业友好的Apache软件许可协议，并且在项目孵化过程中，针对项目的第三方依赖的软件选择提供系列的专业指导， 保证旗下项目可以专心为公众提供高质量的软件。</p>
+
+<h2 id="asf的做事方式">
+<a class="anchor" href="#asf%E7%9A%84%E5%81%9A%E4%BA%8B%E6%96%B9%E5%BC%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>ASF的做事方式</h2>
+
+<p>Apache way是所有ASF项目遵循的一组核心行为，旨在保证项目独立性和多样化，从而确保Apache项目持久健康地发展。</p>
+
+<h3 id="社区大于代码-community-over-code">
+<a class="anchor" href="#%E7%A4%BE%E5%8C%BA%E5%A4%A7%E4%BA%8E%E4%BB%A3%E7%A0%81-community-over-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>社区大于代码 Community Over Code</h3>
+
+<p>在ASF一直坚信的好的软件是由强大的社区构建出来的。诚然，作为一个软件社区，代码是至关重要的，没有代码就没有社区存在的理由。但”Community over code”并不仅仅是一个口号，它意味着我们的行事方式，如何看待彼此，如何进行决策，甚至如何编写代码。健康、互相尊重的社区是非常重要的，这不仅让人感到模模糊糊的温暖，而且会带来切切实实的好处。一个健康、多样、包容的社区，可以促进项目不断成长，可持续发展。甚至，有助于用开源技术提供服务的公司获得商业上的成功。</p>
+
+<h3 id="开放的协作方式-open-and-cooperation">
+<a class="anchor" href="#%E5%BC%80%E6%94%BE%E7%9A%84%E5%8D%8F%E4%BD%9C%E6%96%B9%E5%BC%8F-open-and-cooperation" aria-hidden="true"><span class="octicon octicon-link"></span></a>开放的协作方式 Open and Cooperation</h3>
+
+<p>ASF作为供应商中立的非营利组织，其项目必须是独立于商业影响进行管理。ASF和所有旗下项目都不支持任何特定供应商。开源软件相比闭源的企业软件，具有费用低廉、高质量、免受厂商锁定的优势。所有的Apache软件基金会的软件，包括项目下载、文档、更新、补丁等，都可以自由的下载和使用，并且完全免费。任何人，可以以任何目使用ASF软件，不受安装或部署限制，只需满足商业友好的Apache许可证2.0要求即可。 Apache软件基金会旗下项目的所有代码都是由志愿者在没有任何报酬的情况下贡献的。志愿者包括全球超过6000多名独立个人或公司员工。社区接受多种形式的贡献，包括代码、补丁、文档。</p>
+
+<p>Apache软件基金会与其他开源基金会之间的一个重要区别是，Apache软件基金会并没有规定其项目的技术方向：每个Apache软件基金会项目都由一个自选的项目活跃贡献者团队监督。项目管理委员会（PMC）指导各自项目的日常运营，包括社区发展和产品发布。</p>
+
+<h3 id="精英管理-meritocracy">
+<a class="anchor" href="#%E7%B2%BE%E8%8B%B1%E7%AE%A1%E7%90%86-meritocracy" aria-hidden="true"><span class="octicon octicon-link"></span></a>精英管理 Meritocracy</h3>
+
+<p>“精英管理”：字面意思是基于绩（Merit）的管理架构。由于没有持久的资源（金钱，精力，时间），这就造成了Apache社区很高兴有新人进来帮助他们，对于一个刚到Apache的新人来说，他需要被大家了解和接受，并成为社区的一份子。通常情况下那些在社区里做出建设性贡献的人，都将会被大家所接受。值得注意的是这种基于绩（Merit）的管理架构运行效果非常好，降低的新人加入的门槛，同时也不会引入摩擦。任何人都可以参与，无论性别，文化，所在地，所在公司，抑或他们的专业水平。一个人可以通过提供补丁或实现新功能开始在项目上进行协作，但绩（merit）不仅仅是通过代码贡献来衡量。帮助用户，改进文档，推广项目和其他非编码活动也非常有价值并且得到认可。精英管理Meritocracy推动社区的发展，并确保任何人都可以参与到项目中来，那些参与项目、关心项目的人才是项目的管理者。这些贡献最终会体现到在项目中授予的代码提交权限，包括成为项目管理委员、成为Apache软件基金会成员。</p>
+
+<h3 id="多样性与共识决策">
+<a class="anchor" href="#%E5%A4%9A%E6%A0%B7%E6%80%A7%E4%B8%8E%E5%85%B1%E8%AF%86%E5%86%B3%E7%AD%96" aria-hidden="true"><span class="octicon octicon-link"></span></a>多样性与共识决策</h3>
+
+<p>ASF非常强调多样性原则。 由于大部分开源软件项目都是创新型项目，项目发展并不是一成不变的，多样性保证了开源项目的持续创新， 同样多样性也保证了社区的健康发展。 开源项目会鼓励所有个体或公司都参与进来， 让他们感觉能对项目有所掌控，或者会对项目产生一定影响。这样可以保证意见的多样性、用户的多样性、系统的的多样性。ASF项目通常是要求有三个以上不同公司的人参与开发，以保证项目不会因为其中某个公司的退出而终止。</p>
+
+<p>因为开源项目开发是一个协作开发的过程，必然会存在多样性方向选择，那ASF项目是如何做出共识决策的呢？ 一般来说项目管理委员会在决策之前让大家充分的讨论发表意见，很多的分歧都是在这个阶段解决的，最后通过投票的方式来进行决策。大家采用+1,-1,0的方式投票，如果是-1反对的话，需要提供明确的理由， 最终的决定采用懒式的共识法：只要没有反对意见基本上就算达成一致。</p>
+
+<h3 id="apache-孵化器">
+<a class="anchor" href="#apache-%E5%AD%B5%E5%8C%96%E5%99%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>Apache 孵化器</h3>
+
+<p>学习Apache的工作方式并不总是那么容易，捐赠给ASF的项目往往拥有不同背景。其中一些已经拥有自己的社区和开源合作方法，需要与Apache way有一些磨合。大部分捐赠给ASF的新项目都要进入Apache孵化器进行孵化。想要从孵化器毕业，成为ASF顶级项目，候选项目必须满足ASF成熟度模型，针对代码完整性、版权、许可证、版本发布、共识建立、独立意识等均有严格的要求，确保了毕业的顶级项目的质量。</p>
+
+<p>参考资料</p>
+
+<p><a href="https://jaxenter.com/apache-way-open-source-done-well-140293.html">https://jaxenter.com/apache-way-open-source-done-well-140293.html</a></p>
+
+<p><a href="https://blogs.apache.org/foundation/entry/asf_15_community_over_code">https://blogs.apache.org/foundation/entry/asf_15_community_over_code</a></p>
+
+<p><a href="http://www.ocselected.org/posts/opensource/apache_is_open/">http://www.ocselected.org/posts/opensource/apache_is_open/</a></p>
+
+<p><a href="http://www.ocselected.org/posts/business_model/marketing-open-source-project/">http://www.ocselected.org/posts/business_model/marketing-open-source-project/</a></p>
+
+<p><a href="https://zh.wikipedia.org/wiki/Apache_Incubator">https://zh.wikipedia.org/wiki/Apache_Incubator</a></p>
+
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Willem Jiang‘s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Willem Jiang</li><li><a class="u-email" href="mailto:willemjiang AT gmail.com">willemjiang AT gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/willemjiang"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">willemjiang</span></a></li><li><a href="https://www.twitter.com/willemjiang"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">willemjiang</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>WillemJiang&#39;s blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
