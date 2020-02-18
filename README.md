@@ -16,3 +16,6 @@ The Web Site of willemjiang.github.io is based on minima them.
     bundle exec jekyll server
 
 * Start web browser to access http://localhost:4000
+
+* Publish the website by running the below command from ROOT
+    _script/publish.sh
