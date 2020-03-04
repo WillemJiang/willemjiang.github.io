@@ -29,8 +29,13 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-toc
+  - jekyll-analytics
 
-google_analytics: UA-6539751-2
+jekyll_analytics:
+  GoogleAnalytics:
+    id: UA-6539751-2
+    anonymizeIp: false
+
 repo: http://github.com/WillemJiang/willemjiang.github.io
 disqus_shortname: "willemjiang-github-io"
 disqus_site_shortname: "willemjiang-github-io"
