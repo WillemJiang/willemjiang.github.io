@@ -7,6 +7,14 @@
     <atom:link href="https://willemjiang.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>如何参与开源软件开发</title>
+        <description>针对需要参与开源软件社区开发的初学者的问题，介绍社区开发的基本流程，以及开发交流的一些基本原则，并安利了一个指导性很强的文档。</description>
+        <pubDate>Sat, 28 Mar 2020 12:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//opensource/2020/03/28/How-to-Contribute-to-Open-Source.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//opensource/2020/03/28/How-to-Contribute-to-Open-Source.html</guid>
+      </item>
+    
+      <item>
         <title>Apache Camel 3.x升级指南</title>
         <description>Apache Camel 2.x 至 3.x 升级指南。</description>
         <pubDate>Wed, 27 Nov 2019 12:27:36 +0800</pubDate>
@@ -156,14 +164,6 @@
         <pubDate>Thu, 17 Nov 2016 02:21:34 +0800</pubDate>
         <link>https://willemjiang.github.io//java/2016/11/17/netty-resource-leak-detector.html</link>
         <guid isPermaLink="true">https://willemjiang.github.io//java/2016/11/17/netty-resource-leak-detector.html</guid>
-      </item>
-    
-      <item>
-        <title>Java二进制兼容问题</title>
-        <description>代码库在演进的过程中，或多或少都存在方法，成员变量，以及包的修改。这些修改或多或少会对类库的调用代码产生一些影响。</description>
-        <pubDate>Tue, 15 Nov 2016 23:56:42 +0800</pubDate>
-        <link>https://willemjiang.github.io//java/2016/11/15/java-binary-compatibility.html</link>
-        <guid isPermaLink="true">https://willemjiang.github.io//java/2016/11/15/java-binary-compatibility.html</guid>
       </item>
     
   </channel>
