@@ -7,6 +7,14 @@
     <atom:link href="https://willemjiang.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>CHOASS亚太会议</title>
+        <description>最近一个月CHOASS亚太有关InnerSource的信息</description>
+        <pubDate>Thu, 08 Oct 2020 20:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//innersource/2020/10/08/CHAOSS-AP-InnerSource.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//innersource/2020/10/08/CHAOSS-AP-InnerSource.html</guid>
+      </item>
+    
+      <item>
         <title>内源学习资料</title>
         <description>针对InnerSource Common的相关资源整理了内源学习相关的信息。</description>
         <pubDate>Wed, 09 Sep 2020 12:27:36 +0800</pubDate>
@@ -156,14 +164,6 @@
         <pubDate>Thu, 26 Apr 2018 00:00:00 +0800</pubDate>
         <link>https://willemjiang.github.io//presentation/2018/04/26/distributed-transactions-saga.html</link>
         <guid isPermaLink="true">https://willemjiang.github.io//presentation/2018/04/26/distributed-transactions-saga.html</guid>
-      </item>
-    
-      <item>
-        <title>开源社区的交流准则</title>
-        <description>开源社区的交流是公开的建立在志愿基础上的交流，为了能更好的融入到开源社区，我们需要注意我们的日常行为。</description>
-        <pubDate>Thu, 01 Dec 2016 00:52:36 +0800</pubDate>
-        <link>https://willemjiang.github.io//opensource/2016/12/01/opensource-code-of-conduct.html</link>
-        <guid isPermaLink="true">https://willemjiang.github.io//opensource/2016/12/01/opensource-code-of-conduct.html</guid>
       </item>
     
   </channel>
