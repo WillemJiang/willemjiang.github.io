@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "CHOASS亚太会议"
-date: 2020-10-09 18:27:36
+date: 2020-10-09 12:27:36
 comments: true
 description: "最近一个月CHOASS亚太有关InnerSource的信息"
 keywords: "InnerSource"
