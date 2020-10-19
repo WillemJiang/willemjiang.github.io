@@ -9,7 +9,8 @@ categories: InnerSource
 
 tags: InnerSource
 ---
-## CHAOSS 亚太会议 有关内源相关的信息汇总
+## CHAOSS 亚太会议
+[CHAOSS](https://chaoss.community/) 是 Linux 基金会旗下的一个子项目，主要关注的如何创建与开源项目社区健康相关的分析和指标。 CHAOSS 亚太会议是CHAOSS专门针对亚太地区召开的会议，在会上CHOASS的核心人员会定期与我们沟通CHAOSS项目的最新进展，以及交流我们关心的问题。 前一段时间由于我参与了公司内源的事情，所以就在会议中问了一些有关内源的问题， CHAOSS项目秘书长Matt就帮忙联系到了Daniel来帮着我们解答和内源相关的问题。 这篇文章是在英文会议纪要的基础上的翻译稿。
 
 
 ### CHAOSS 亚太会议信息
