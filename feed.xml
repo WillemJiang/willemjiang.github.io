@@ -7,6 +7,14 @@
     <atom:link href="https://willemjiang.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>ApacheCon Asia 2021 集成主题介绍</title>
+        <description>ApacheCon Asia 2021 集成主题介绍 </description>
+        <pubDate>Sat, 12 Jun 2021 20:27:36 +0800</pubDate>
+        <link>https://willemjiang.github.io//apachecon/2021/06/12/apachecon-asia-integration-track.html</link>
+        <guid isPermaLink="true">https://willemjiang.github.io//apachecon/2021/06/12/apachecon-asia-integration-track.html</guid>
+      </item>
+    
+      <item>
         <title>参加ISC虚拟峰会</title>
         <description>InnerSource Commons是一个非常有活力的组织，我非常有幸参加了12月份举办的ISC亚太峰会。</description>
         <pubDate>Tue, 22 Dec 2020 20:27:36 +0800</pubDate>
@@ -156,14 +164,6 @@
         <pubDate>Sun, 21 Oct 2018 06:27:36 +0800</pubDate>
         <link>https://willemjiang.github.io//opensource/2018/10/21/asf-introduction.html</link>
         <guid isPermaLink="true">https://willemjiang.github.io//opensource/2018/10/21/asf-introduction.html</guid>
-      </item>
-    
-      <item>
-        <title>Apache Camel 2.22.0发布了</title>
-        <description>Apache Camel 2.22.0 发布了，有哪些特性值的关注？</description>
-        <pubDate>Mon, 16 Jul 2018 01:34:04 +0800</pubDate>
-        <link>https://willemjiang.github.io//camel/2018/07/16/camel-2220-was-released.html</link>
-        <guid isPermaLink="true">https://willemjiang.github.io//camel/2018/07/16/camel-2220-was-released.html</guid>
       </item>
     
   </channel>
