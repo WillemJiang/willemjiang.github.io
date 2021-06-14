@@ -13,7 +13,7 @@ tags: Integration, ApacheCon
 
 [ApacheCon Asia 2021](https://apachecon.com/acasia2021/zh/) 将于 8月6日至 8月8日在线上举行。 作为本次[集成主题](https://apachecon.com/acasia2021/zh/tracks/integration.html)的出品人， 笔者将向大家介绍[集成主题](https://apachecon.com/acasia2021/zh/tracks/integration.html)相关议题，目前大会报名已开启，欢迎大家[报名注册](https://www.huodongxing.com/event/3600137190322)。
 
-集成就是将基于各种不同平台、用不同方案建立的异构系统整合在一起的方法和技术。 在ASF最有名的应用集成项目就是[Apache Camel](https://camel.apache.org/)有多种个项目提供了多种集成解决方案。这次[ApacheCon Asia 2021](https://apachecon.com/acasia2021/zh/) [集成主题](https://apachecon.com/acasia2021/zh/tracks/integration.html)给大家带来针对[Apache Camel](https://camel.apache.org/)项目的最新资讯，现在就随着我的脚本一窥究竟吧！
+集成就是将基于各种不同平台、用不同方案建立的异构系统整合在一起的方法和技术。 在ASF最有名的应用集成项目就是[Apache Camel](https://camel.apache.org/)有多种个项目提供了多种集成解决方案。这次[ApacheCon Asia 2021](https://apachecon.com/acasia2021/zh/) [集成主题](https://apachecon.com/acasia2021/zh/tracks/integration.html)给大家带来针对[Apache Camel](https://camel.apache.org/)项目的最新资讯，现在就随着我的脚步一窥究竟吧！
 
 对于还不太了解[Apache Camel](https://camel.apache.org/)的朋友，建议大家可以关注[Claus](https://twitter.com/davsclaus) 和 [Andrea](https://twitter.com/oscerd2) 给大家带来的 [Apache Camel 3：下一代的企业集成](https://apachecon.com/acasia2021/zh/sessions/1071.html) 。[Claus](https://twitter.com/davsclaus) 和 [Andrea](https://twitter.com/oscerd2) 是[Apache Camel](https://camel.apache.org/)的主力开发，[Claus](https://twitter.com/davsclaus) 还是[Camel in Action](https://www.manning.com/books/camel-in-action-second-edition?)的作者。 他们主导了[Apache Camel](https://camel.apache.org/) 3的开发，因此在这个演讲中他们会介绍很多关于Camel 3的最新开发进展，以及Camel家族的新成员：
 
