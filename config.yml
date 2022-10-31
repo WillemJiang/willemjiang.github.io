@@ -120,9 +120,9 @@ params:
       enabled: true
       width: 40
       height: 40
-      url: willemjiang.ico
+      url: favicon.ico
     title: Hugo # 页面title
-    favicon: willemjiang.ico
+    favicon: favicon.ico
     board: ASF member, Open Sourcer # 公告牌
 
   # Share
