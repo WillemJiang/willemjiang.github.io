@@ -65,7 +65,7 @@ menu:
 
 
 params:
-  since: 2017
+  since: 2006
   dateFormatToUse: "2006-01-02"
   enablePostCopyright: true
   copyright_link: http://creativecommons.org/licenses/by/4.0/deed.zh
