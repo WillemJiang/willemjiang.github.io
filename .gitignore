@@ -1,4 +1,7 @@
 public/
+# The search file of Mac OSX
 .DS_Store
 .hugo_build.lock
 .sass-cache/
+# viscode file
+.vscode/
