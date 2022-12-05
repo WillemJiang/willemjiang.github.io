@@ -22,6 +22,6 @@ categories = [
   * Apache软件基金会孵化器
   * 开源之夏暑期实习活动
 
-![image-WISA2022-JiangNing-Poster](/images/WISA2022/WISA2022-JiangNing.jpeg)
+![image-WISA2022-JiangNing-Poster](/images/WISA2022/WISA2022-JiangNing.png)
 
-* 大家可以通过下面的[链接](/presentation/OpenSourceCommunityMentoring.pdf)获取到本次讲座幻灯片。
+* 大家可以通过下面的[链接](/presentation/OpenSourceMentoring.pdf)获取到本次讲座幻灯片。
