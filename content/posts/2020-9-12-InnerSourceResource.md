@@ -1,7 +1,7 @@
 +++
 author = "Hugo Authors"
 title = "内源学习资料"
-date = "2019-10-29"
+date = "2020-09-12"
 description = "针对InnerSource Common的相关资源整理了内源学习相关的信息。"
 tags = [
     "InnerSource",
@@ -11,18 +11,8 @@ categories = [
     "InnerSource",
 ]
 +++
----
-layout: post
-title: "内源学习资料"
-date: 2020-09-09 04:27:36
-comments: true
-description: "针对InnerSource Common的相关资源整理了内源学习相关的信息。"
-keywords: "InnerSource"
-categories: InnerSource
-
-tags: InnerSource
----
 ## InnerSource Commons 提供的学习资料
+
 [InnerSource Commons](https://innersourcecommons.org) 是一群在公司内部推行内源的爱好者组织的社区 ，在社区官网的资源栏中提供了很多和内源相关的学习资料：
 
 1. 视频培训材料 [Learning path](https://innersourcecommons.org/resources/learningpath/)
@@ -30,7 +20,7 @@ tags: InnerSource
    先从内源解决什么样的问题， 内源是如何工作，以及内源带来的好处是什么，以及内源的原则向我们介绍了内源。然后按照内源项目涉及的几个角色，例如内源项目核心维护者[Trusted Committer](https://innersourcecommons.org/resources/learningpath/trusted-committer/) ，内源项目的参与者 [Contributor](https://innersourcecommons.org/resources/learningpath/contributor)，以及产品的负责人 [Product Owner](https://innersourcecommons.org/resources/learningpath/product-owner)，分别介绍这些角色的职责，以及如何成为这样的角色。
     个人认为这个教程从角色入手很有代入感，同时在课程最后还有一个比较详细Workbook来验证大家学习成果。
 
-	由于[Trusted Committer](https://innersourcecommons.org/resources/learningpath/trusted-committer/) 在内源项目中扮演了项目导师， 代码架构看护和社区健康维护者的多重角色， 是内源项目内外粘结剂。 目前新加入的内源项目的owner需要好好阅读相关的文章，确保自己充分理解trusted-committer的角色职责。
+    由于[Trusted Committer](https://innersourcecommons.org/resources/learningpath/trusted-committer/) 在内源项目中扮演了项目导师， 代码架构看护和社区健康维护者的多重角色， 是内源项目内外粘结剂。 目前新加入的内源项目的owner需要好好阅读相关的文章，确保自己充分理解trusted-committer的角色职责。
 
 2. [内源相关的图书](https://innersourcecommons.org/resources/books/)
 
