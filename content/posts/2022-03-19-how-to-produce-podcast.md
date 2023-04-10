@@ -16,15 +16,15 @@ categories = [
 
 ### 缘起
 
-ALC Beijing 成立之时正好是第一波新冠疫情的高峰期，所有的线下活动都成为泡影。ALC Beijing 除了两周一次的视频会议以外，我们急需建立一个新的渠道向大家传播开源文化，分享 Apache 开源项目的成功之道。 当时建盛老师在2020年春节期间一联拉着开源圈的小伙伴录了好几期播客节目，效果还不错。按照建盛老师的话说，让程序员写稿子太难了，用播客聊天的方式，可以让大家在比较轻松的环境下分享他们项目背后的故事以及他们自己的感悟。 于是在建盛老师的帮助下， 我拉上了潘娟（我们的开源Meetup的女神级主持人），开始了 [ALC Beijing的播客之旅](https://www.ximalaya.com/sound/326735355)。 
+ALC Beijing 成立之时正好是第一波新冠疫情的高峰期，所有的线下活动都成为泡影。ALC Beijing 除了两周一次的视频会议以外，我们急需建立一个新的渠道向大家传播开源文化，分享 Apache 开源项目的成功之道。 当时建盛老师在2020年春节期间一联拉着开源圈的小伙伴录了好几期播客节目，效果还不错。按照建盛老师的话说，让程序员写稿子太难了，用播客聊天的方式，可以让大家在比较轻松的环境下分享他们项目背后的故事以及他们自己的感悟。 于是在建盛老师的帮助下， 我拉上了潘娟（我们的开源Meetup的女神级主持人），开始了 [ALC Beijing的播客之旅](https://www.ximalaya.com/sound/326735355)。
 
-转眼间 ALC Beijing 播客已经录制了二十期节目了，在这两年的时间里面我们邀请了Apache项目的亲历者和大家分享了Apache项目的成功之道，以及个人与项目成长的故事；我们邀请了从事开源知识产权的一线律师与我们分享了开源协议，以及开源知识产权相关知识；在节目中我们也邀请了一些深度参与开源的在校的大学生分享他们的开源经历，帮助更多的小伙伴了解开源，参与开源。 
+转眼间 ALC Beijing 播客已经录制了二十期节目了，在这两年的时间里面我们邀请了Apache项目的亲历者和大家分享了Apache项目的成功之道，以及个人与项目成长的故事；我们邀请了从事开源知识产权的一线律师与我们分享了开源协议，以及开源知识产权相关知识；在节目中我们也邀请了一些深度参与开源的在校的大学生分享他们的开源经历，帮助更多的小伙伴了解开源，参与开源。
 
 ### 节目内容
 
-因为 ALC Beijing 就是由很多本地发起的 Apache项目聚焦而成的，来邀请 这些 Apache项目主创来分享自己的故事就形成了一个我们节目的一大亮点。咱们第一期的播客就是从[Apache Skywalking的开源故事](https://www.ximalaya.com/keji/37853515/294907345)开始的， 时隔20个月，我们又做了一期[Apache Skywalking2021贡献者增长的秘密](https://www.ximalaya.com/sound/493443097) 来探究Skywalking项目贡献者发展，和项目生态建设的秘诀。我们邀请 Apache ShardingSphere的主创分享项目[开发者的成长故事](https://www.ximalaya.com/keji/37853515/304115934)，以及[开源项目架构演进的故事](https://www.ximalaya.com/sound/340106589)。 Apache APISIX 的创始人温铭和王院生分享了[开源共同体建设的秘诀](https://www.ximalaya.com/sound/314055931)。 来自清华的黄向东和乔嘉林也为我们带来了 Apache IoTDB 项目高校博士的[科研故事](https://www.ximalaya.com/sound/370382501)。 作为前端领域很有人气的 Apache Echarts 主创团队，也分享了他们的[Apache项目孵化毕业感言](https://www.ximalaya.com/keji/37853515/379500071)。 当然我们也邀请到了正在创业中的 Apache DolphineScheduler 的核心团队来分享[项目开源，持续吸引贡献者，构建共同体的点滴故事](https://www.ximalaya.com/keji/37853515/449101273)。 
+因为 ALC Beijing 就是由很多本地发起的 Apache项目聚焦而成的，来邀请 这些 Apache项目主创来分享自己的故事就形成了一个我们节目的一大亮点。咱们第一期的播客就是从[Apache Skywalking的开源故事](https://www.ximalaya.com/keji/37853515/294907345)开始的， 时隔20个月，我们又做了一期[Apache Skywalking2021贡献者增长的秘密](https://www.ximalaya.com/sound/493443097) 来探究Skywalking项目贡献者发展，和项目生态建设的秘诀。我们邀请 Apache ShardingSphere的主创分享项目[开发者的成长故事](https://www.ximalaya.com/keji/37853515/304115934)，以及[开源项目架构演进的故事](https://www.ximalaya.com/sound/340106589)。 Apache APISIX 的创始人温铭和王院生分享了[开源共同体建设的秘诀](https://www.ximalaya.com/sound/314055931)。 来自清华的黄向东和乔嘉林也为我们带来了 Apache IoTDB 项目高校博士的[科研故事](https://www.ximalaya.com/sound/370382501)。 作为前端领域很有人气的 Apache Echarts 主创团队，也分享了他们的[Apache项目孵化毕业感言](https://www.ximalaya.com/keji/37853515/379500071)。 当然我们也邀请到了正在创业中的 Apache DolphineScheduler 的核心团队来分享[项目开源，持续吸引贡献者，构建共同体的点滴故事](https://www.ximalaya.com/keji/37853515/449101273)。
 
-为了帮助在校大学生了解开源，更好地参与到开源项目中来， ALC Bejing 播客也非常重视这方面的选题。 我们先后邀请学生和项目导师分享[参与供应链点亮计划--暑期2020的活动心得](https://www.ximalaya.com/keji/37853515/370806391) , 同时也邀请了到了小雅和禹任两位校大学生向大家介绍了[开源社区的非代码贡献](https://www.ximalaya.com/sound/382771451)。 
+为了帮助在校大学生了解开源，更好地参与到开源项目中来， ALC Bejing 播客也非常重视这方面的选题。 我们先后邀请学生和项目导师分享[参与供应链点亮计划--暑期2020的活动心得](https://www.ximalaya.com/keji/37853515/370806391) , 同时也邀请了到了小雅和禹任两位校大学生向大家介绍了[开源社区的非代码贡献](https://www.ximalaya.com/sound/382771451)。
 
 另外我们也会结合一些热点新闻，和大家聊聊[开源合规的问题](https://www.ximalaya.com/sound/484344060),[开源与商业的关系](https://www.ximalaya.com/sound/463774317),以及我们把项目捐给Apache软件基金会到底捐了些什么，[开源项目知识产权](https://www.ximalaya.com/sound/460687369)到底有哪些？
 
@@ -38,7 +38,7 @@ ALC Beijing 成立之时正好是第一波新冠疫情的高峰期，所有的�
   我们会在 [ALC Beijing Github issue](https://github.com/alc-beijing/alc-site/issues) 上面介绍本次播客的话题和相关背景，并先[草拟一个播客聊天的提纲](https://github.com/alc-beijing/alc-site/issues/127)，邀请嘉宾一起[商议相关的话题](https://github.com/alc-beijing/alc-site/issues/161)。有时候为了保证效果，我们会提前和嘉宾进行一个前期的交流找到相关的话题。
 
 * 第二阶段播客内容录制
-  因为疫情的关系，在最开始我们的播客录制是采用视频会议的方式进行录制的，时间大概是一小时左右。为了保证录音的品质，一般会请嘉宾在连接会议的同时，在本地用另外一个手机单独录自己的声音。这样的我们后期制作可以采用多轨合成的方式进行制作。 
+  因为疫情的关系，在最开始我们的播客录制是采用视频会议的方式进行录制的，时间大概是一小时左右。为了保证录音的品质，一般会请嘉宾在连接会议的同时，在本地用另外一个手机单独录自己的声音。这样的我们后期制作可以采用多轨合成的方式进行制作。
   去年下半年购置了相关的[视频](https://www.dji.com/cn/pocket-2)和[录音设备](https://zoomcorp.com/en/us/podtrak-recorders/podcast-recorders/podtrak-p4/),我们会邀请嘉宾到现场交流录制，这样在录制节目的同时还可以交流一下，寻找后续的合作空间。  
   具体的录制过程就比较简单了，和我们平时聊天一样正常进行就可以了。如果嘉宾或者主持觉得自己之前的表述不太好，可以停下来，把想表达的话重新说一遍。我们在后续制作中会按照录音进行相关的剪辑。
 

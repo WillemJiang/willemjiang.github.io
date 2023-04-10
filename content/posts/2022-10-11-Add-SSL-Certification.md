@@ -20,7 +20,7 @@ categories = [
 
 ```
 
-因为访问的服务器的链接是https， 应该JVM在SSL链接时候没有找到服务器的证书所造成的， 要解决这个问题需要将服务器的证书添加到JVM的配置中。 
+因为访问的服务器的链接是https， 应该JVM在SSL链接时候没有找到服务器的证书所造成的， 要解决这个问题需要将服务器的证书添加到JVM的配置中。
 
 在JVM中缺省的证书存放路径如下 $JAVA_HOME/jre/lib/security/cacerts, 我们需要把服务器的证书添加到这个文件中。
 
@@ -50,6 +50,6 @@ java InstallCert [--proxy=proxyHost:proxyPort] <host>[:port]
 
 ### 参考资料
 
-* https://stackoverflow.com/questions/4062307/pkix-path-building-failed-unable-to-find-valid-certification-path-to-requested
-* https://github.com/escline/InstallCert
+* [stackoverflow上的相关讨论](https://stackoverflow.com/questions/4062307/pkix-path-building-failed-unable-to-find-valid-certification-path-to-requested)
+* [InstallCert代码](https://github.com/escline/InstallCert)
   
