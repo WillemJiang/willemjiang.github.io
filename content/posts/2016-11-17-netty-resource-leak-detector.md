@@ -83,7 +83,7 @@ public void channelRead(ChannelHandlerContext ctx, Object msg) {
 
 为了方便我们检测内存泄露的问题，Netty提供了一个缺省的内存检测的实现[ResourceLeakDetector](https://netty.io/4.0/api/io/netty/util/ResourceLeakDetector.html) 。[ResourceLeakDetector](https://netty.io/4.0/api/io/netty/util/ResourceLeakDetector.html)会跟踪引用计数对象的使用情况，并将相关的引用计数对象的使用栈存储下来供开发人员除虫之用。由于引用对象追踪会耗费多的资源，因此对系统会有比较大的影响。运行Netty应用的时候，Netty缺省会采用Simple模式，即采用1%抽样来追踪相关资源分配。如果出现内存泄露，会输入相关log信息，并显示最近相关内存使用情况。
 
-```
+```txt
 ERROR io.netty.util.ResourceLeakDetector - LEAK:
  ByteBuf.release() was not called before it's garbage-collected.
 ```
@@ -97,8 +97,6 @@ System.setProperty("io.netty.leakDetection.maxRecords", "100");
 System.setProperty("io.netty.leakDetection.acquireAndReleaseOnly", "true");
 ResourceLeakDetector.setLevel(ResourceLeakDetector.Level.PARANOID);
 ```
-
-
 
 #### camel-netty4的内存泄露问题
 

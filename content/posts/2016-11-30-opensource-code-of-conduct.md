@@ -14,7 +14,6 @@ categories = [
 前段时间和大家聊了[为什么开源社区会选择邮件列表作为讨论交流的平台](https://willemjiang.github.io/blog/2016/why-we-use-mailing-list/)， 今天在Apache官方Twitter上面看到了这样一组有意思的数据：
 
 > At Apache, "if it didn't happen on-list, it didn't happen." Over the past 2 wks 7,602 people sent 77,412 emails on 35,848 topics & 643 lists.
-
 > 在Apache，”只有在邮件列表上面发生的事情才真正发生“。 在最近两周，有7602人在643个邮件列表里面，针对35848个主题发送了77412封邮件。
 
 平均下来一个人在两个礼拜的时间内会发十封信，这样流量还是挺不少的。
