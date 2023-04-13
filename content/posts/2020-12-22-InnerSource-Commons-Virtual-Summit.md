@@ -13,7 +13,9 @@ categories = [
 +++
 
 ## 参加ISC虚拟峰会
+
 ### 缘起
+
 听说InnerSource（内源）这个词有一段时间了，但是由于最近工作的原因在7月份的时候把工作重心放到内源这块来的时候，开始到处收集有关[InnerSource相关的资料](https://willemjiang.github.io/innersource/2020/09/09/InnerSourceResource.html), 于是了解到[InnerSource Commons(ISC)](http://innersourcecommons.org/)内源组织。 这个组织是由一群从事内源的爱好者成立的一个国际组织，目前有两个工作组，一个是着重于撰写教程来普及内源知识的 [InnerSource Learning Path](http://innersourcecommons.org/resources/learningpath/), 另外一个是着重于总结与内源相关经验与模式的工作组 [InnerSource patterns](https://www.youtube.com/playlist?list=PLCH-i0B0otNSiHdPkI1AJ86ajzNaH3wnH)。 大家可以通过访问ISC的[Slack Channel](https://innersourcecommons-inviter.herokuapp.com/)与 ISC成员进行沟通。
 
 ![image-innersource-commons](/images/ISC12/image-innersource-commons.png)
@@ -21,6 +23,7 @@ categories = [
 9月份拉着谭中意一起录一期有关内源[ALC Beijing播客](https://alc-beijing.github.io/alc-site/post/podcast/episode-5-inner-source/)， 最后聊到了12月份腾讯将与ISC合办亚太峰会，由于受疫情影响2020年的ISC峰会一般采用的是线上播放录像的方式进行，这次非常有幸我受邀到腾讯总部参加了这次峰会线下分会场的活动。
 
 ### 准备演讲稿
+
 在10月份的时候接到了会务组的约稿，想邀请我们介绍一下[华为内源2.0](https://www.youtube.com/watch?v=K8pU4H29ORk&list=PLCH-i0B0otNSA4KltJHgcQB6450VI-8pG&index=18)的故事。 演讲的时间大概是在15分钟，提前采用录播的形式，用英文来讲。
 
 ![presentation](/images/ISC12/image-presentation.png)
@@ -37,8 +40,8 @@ categories = [
 
 ![presentation3](/images/ISC12/image-presentation3.png)
 
-
 ### 参会
+
 虽然这次 [ISC Virtual Summit](https://www.youtube.com/watch?v=TA82AFyIaUA&list=PLCH-i0B0otNSA4KltJHgcQB6450VI-8pG1)是一个远程的线上会议 + 腾讯分会场的会议， 但是大家还是都像是远程而来参加Party一般高兴。我觉得这就是共同体的魅力， 一群有着共同兴趣爱好的小伙伴聚集在一起讨论相互关心的话题。 整个会议分为两天，从下午1点开始到4点半，期间除了有专门的主题演讲，还有一个分组讨论，全程大概有100多人在线上参与互动，同时腾讯在内部转播并提供了同声传译，吸引了1000+观众的观看。
 
 ![ISC12-all](/images/ISC12/image_ISC12-all.jpeg)
@@ -51,4 +54,3 @@ categories = [
 [金融服务的内源圆桌讨论](https://www.youtube.com/watch?v=a2BEAyIngWg)，邀请到了PayPal， National Australia Bank 还有 Capital One的内源实践者以及ISC的创始人[Danese Cooper](https://www.linkedin.com/in/danesecooper/)来和大家分享在内源实施过程中的经验，里面有很多干货强烈推荐大家观看学习， 例如内源项目如何体现价值吸引新用户；如何通过贡献获得自我认可并取得成就感；开源的驱动力不是利他，而是满足自我的利益等。
 
 ![image-pannel](/images/ISC12/image_pannel.png)
-

@@ -28,8 +28,6 @@ Apache Camel 正式支持 Spring 5，由于Camel没有使用Spring5的独有特�
 
 ## 新增组件
 
-
-
 在Apache Camel 2.22.0 中还新增加了如下的组件
 
 - [camel-as2](https://github.com/apache/camel/blob/master/components/camel-as2/camel-as2-component/src/main/docs/as2-component.adoc) - 支持使用[AS2(Applicability Statement 2)协议](https://tools.ietf.org/html/rfc4130)进行传输。
@@ -48,11 +46,7 @@ Apache Camel 正式支持 Spring 5，由于Camel没有使用Spring5的独有特�
 
 - [camel-testcontainers](https://github.com/apache/camel/blob/master/components/camel-testcontainers/src/main/docs/testcontainers.adoc) - 支持使用[testcontainers](https://www.testcontainers.org) 来通过扩展[ContainerAwareTestSupport](https://github.com/apache/camel/blob/master/components/camel-testcontainers/src/main/java/org/apache/camel/test/testcontainers/ContainerAwareTestSupport.java) 采用docker方式启动相关的服务。
 
-
-
 ## 参考资料
-
-
 
 1. [Apache Camel 2.22.0 Download](http://camel.apache.org/camel-2220-release.html)
 2. [Apache Camel 2.22.0 Release Note](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12342707&projectId=12311211)

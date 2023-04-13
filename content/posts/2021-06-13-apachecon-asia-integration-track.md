@@ -35,4 +35,4 @@ categories = [
 
 ## 关于ApacheCon
 
-ApacheCon是Apache软件基金会的官方全球系列会议。自1998年以来，ApacheCon一直吸引着各个层次的参与者，在350多个Apache项目及其不同的社区中探索 "今日的技术"。在2020年和2021年，ApacheCon活动通过会议、主题演讲、真实世界的案例研究、社区活动等，在线上以虚拟的方式展示无处不在的Apache项目和以及最新的创新。欲了解更多信息，请访问 http://apachecon.com/ 和 https://twitter.com/ApacheCon 。
+ApacheCon是Apache软件基金会的官方全球系列会议。自1998年以来，ApacheCon一直吸引着各个层次的参与者，在350多个Apache项目及其不同的社区中探索 "今日的技术"。在2020年和2021年，ApacheCon活动通过会议、主题演讲、真实世界的案例研究、社区活动等，在线上以虚拟的方式展示无处不在的Apache项目和以及最新的创新。欲了解更多信息，请访问 <http://apachecon.com/> 和 <https://twitter.com/ApacheCon> 。

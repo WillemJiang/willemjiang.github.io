@@ -60,12 +60,12 @@ ASF非常强调多样性原则。 由于大部分开源软件项目都是创新�
 
 参考资料
 
-<https://jaxenter.com/apache-way-open-source-done-well-140293.html>
+1. <https://jaxenter.com/apache-way-open-source-done-well-140293.html>
 
-<https://blogs.apache.org/foundation/entry/asf_15_community_over_code>
+2. <https://blogs.apache.org/foundation/entry/asf_15_community_over_code>
 
-<http://www.ocselected.org/posts/opensource/apache_is_open/>
+3. <http://www.ocselected.org/posts/opensource/apache_is_open/>
 
-<http://www.ocselected.org/posts/business_model/marketing-open-source-project/>
+4. <http://www.ocselected.org/posts/business_model/marketing-open-source-project/>
 
-<https://zh.wikipedia.org/wiki/Apache_Incubator>
+5. <https://zh.wikipedia.org/wiki/Apache_Incubator>
