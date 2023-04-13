@@ -32,8 +32,6 @@ CamelContext是对Camel 运行时的一个抽象，其中包含了有个路由�
 5. 调用CamelContext的start() 方法，这样可以启动Camel内部有关消息发送，接收，以及处理所使用的线程。
 6. 当调用CamelContext的stop() 方法时，Camel 会将妥善关闭所有Endpoint和Camel内部的线程。
 
-
-
 ### Components
 
 Component 是一个容易混淆的名词，可能使用EndpointFactory会更合适，因为Component是创建Endpoint实例的工厂类。例如如果一个Camel应用使用了几个JMS 队列，那么这个应用首先需要创建一个叫JmsComponent（实现了Component接口）的实例，你可以在此配置有关JMS连接的信息，然后应用会调用这个JMSComponent对象的createEndpoint()方法来创建一个JmsEndpoint对象（这个对象实现了Endpoint接口）。事实上，应用代码并没直接调用Component.createEndoint() 方法，而是CamelContext对象通过找到对应的Component对象（我马上会在后续的文章中介绍）,并调用createEndpoint() 方法来实现的。
@@ -46,13 +44,14 @@ myCamelContext.getEndpoint(
 在getEndpoint()中使用的参数就是URI。这个URI的前缀(: 之前的那部分内容）描述了一个组件的名字，CamelContext对象内部维护着一个组件名字与Component对象的映射表（Camel catalog中存储了名字与Component依赖之间的关系)。对于上面给定的URI例子来说，CamelContext对象会根据pop3前缀找到MailComponent类，然后CamelContext对会调用MailComponent的createEndpoint("pop3://john.smith@mailserv.example.com?password=myPassword") 方法。在createEndpoint()方法中， 将把URI分割成一组参数列表，这些参数将被用来设置生成的Endpoint对象的属性。
 
 在上一小节中， 我提到的CamelContext对象维护了一个组件名到Component对象的映射表。但这个映射表是如何产生的呢？这里可以在通过代码调用CamelContext.addComponent(String componentName, Component component)来实现。 下面的例子就是展示了如何给一个MailComponent对象注册上三个不同的名字。
+
 ```java
 Component mailComponent =
        new org.apache.camel.component.mail.MailComponent();
 myCamelContext.addComponent("pop3", mailComponent);
 myCamelContext.addComponent("imap", mailComponent);
 myCamelContext.addComponent("smtp", mailComponent);
-```    
+```
 
 第二个方法也是最常用的方法，就是通过CamelContext对象来实现一个懒初始化。这个方法依赖于一套Camel内部的定义Component发现机制， 开发者只要在实现Component接口的时候按照这一机制设置进行设置，就可以保证CamelContext能够在类加载路径中发现这一Component。这里我们假设你所写的Component类名为 com.example.myproject.FooComponent， 并且你想让Camel自动将这个component和"foo”这个名字相对应。为了做到这一点，你需要先写一个叫做"META-INF/services/org/apache/camel/component/foo" 属性文件， 注意这个文件没有".properties"作为后缀名，在这个属性文件中只有一个class的条目，而这个条目的只就是你所写的类的全名。如下所示
 
@@ -65,18 +64,20 @@ myCamelContext.addComponent("smtp", mailComponent);
 正如我在Endpoint中说描述的， Camel提供了对多种通信协议提供了开箱即用的支持。这种支持是建立在实现了Component接口的类以及让CamelContext对象自动建立映射关系的配置文件基础之上的。
 
 在这一节的开始， 我使用的这个例子来调用CamelContext.getEndpoint()。
+
 ```java
 myCamelContext.getEndpoint("
     pop3://john.smith@mailserv.example.com?password=myPassword");
-```    
+```
 
 在最开始举这个例子的时候，我说这个getEndpoint()方法的参数是一个URI。我这么说是因为Camel的在线问答以及Camel的源代码就把这个参数声明为一个URI。在现实生活中，这个参数是按照URL来定义的。这是因为Camel会从参数中通过一个简单的算法查找第一：来分析出组件名。为了了解其中的奥妙，大家可以回想一下我在前面 URL，URI，URN和IRI是什么中谈到的 一个URI可以是URL或者URN。 现在让我们来看一下下面的getEndpoint()调用。
+
 ```java
 myCamelContext.getEndpoint("pop3:...");
 myCamelContext.getEndpoint("jms:...");
 myCamelContext.getEndpoint("urn:foo:...");
 myCamelContext.getEndpoint("urn:bar:...");
-```    
+```
 
 Camel会先找出这些component的标识，例如 "pop3", "jms", "urn" 和 "urn"。如果"urn:foo" 和"urn:bar" 能够别用来识别component，或者是使用"foo" 和"bar" （这一可以跳过这个"urn:"前缀）。所以在实际的编程中，大家更喜欢使用URL来制定一个Endpoint（使用":..."来描述的字符串）而不是用一个URN（ 使用"urn::..."来描述的字符串）。正因为我们没有完全按照URN的规定的参数来调用getEndpoint() 方法， 所以这个方法的参数更像一个URL而不是一个URI。
 

@@ -35,4 +35,3 @@ categories = [
 
 最后说一下，fork别人的代码需要尊重别人的知识产权， 不能随意修改相关源文件的*License header*声明。具体的内容大家可以参考Linux Foundation专门给开源开发者开发的免费[合规课程](https://trainingportal.linuxfoundation.org/courses/licensing-basics-for-developers-lfc191)，同时在Apache软件基金会的[License指导说明](https://apache.org/legal/src-headers.html#3party)里面也有相关的描述。
 要知道开源代码也是有知识产权的，如果你在一段不是你写的代码上面加上你的copyright，那就相当于对外宣称你是这段代码的作者， 这样行为很容易就被扣上抄袭的帽子。特别是如果你把fork的代码又开源的，虽然你保留的之前的提交记录， 并且在README上面也说了这是基于别人的代码修改出来的， 但是这不能成为掩盖你将他人工作成果宣称是自己工作成果的事实。
-

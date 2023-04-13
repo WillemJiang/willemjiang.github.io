@@ -30,7 +30,7 @@ categories = [
 
 下面给出的脚本是如何创建camelk需要的minikube 虚拟机的
 
-```
+```sh
 KUBERNETES_VERSION=v1.12.0
 MEMORY=10240
 CPUS=4
@@ -58,7 +58,7 @@ minikube start -p camelk --vm-driver hyperkit --extra-config=apiserver.enable-ad
 
 因为minikube启动k8s的时候，需要从gcr.io上面下载镜像，如果在国内因为众所周知的原因，我们需要通过设置代理的方式才能下载相关的镜像， 这里我需要配置一下本地的HTTP代理， 由于minikube的 NO_PROXY 只支持单一IP设置，我们需要将minikube使用的local registry地址去掉。
 
-```
+```sh
 export HOST_IP=192.168.1.100
 export HTTP_PROXY=http://${HOST_IP}:1087
 export HTTPS_PROXY=http://${HOST_IP}:1087
@@ -80,6 +80,6 @@ Camel-K 包含了kamel命令行指令以及operator的镜像文件以及builder�
 
 可以使用`kamel reset`重置当前的camel-k的安装。
 
-使用`kamel run xxx `来上传相关的camel 路由规则。
+使用 `kamel run xxx` 来上传相关的camel 路由规则。
 
 有关Camel-K的详细安装可以参见[Camel-K安装文档](https://github.com/apache/camel-k#installation)。

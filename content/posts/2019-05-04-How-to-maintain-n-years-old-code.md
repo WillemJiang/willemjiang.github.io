@@ -29,8 +29,6 @@ categories = [
 
 因为我虽然维护[camel-cxf](https://github.com/apache/camel/blob/master/components/camel-cxf/src/main/docs/cxf-component.adoc)组件有很长时间，但是最近三年都没有再维护这部分代码，当时见到这个问题就想试一下看看自己的手是不是生疏了。 看完这个问题我的脑子里大概能复现[CXF Interceptor](https://cxf.apache.org/docs/interceptors.html)的调用场景，但是对于那个关键的 "org.apache.cxf.oneway.robust" property 的含义以及后续的操作我是一点都想不起来了。 这个时候我该怎么办呢？当时我第一想到是问问以前的同事吧，可能他们还记得。 于是我点开微信给前同事发了个消息，问他还清楚这个事情吗？ 他的回复比较简单，”这个我也记不清楚了。“  这下有点傻眼了，要是我回过头去读之前的代码可能要花费一天甚至几天的时间才能找到修复的方法，这样一来，原本是想花几个小时练手的活变成了一个要一周时间的大活了。有没有办法多快好省地把问题解决了，这时我想起了之前维护Camel经常使用的一招问问Google看看。
 
-
-
 ### 时光机器
 
 于是我在Google的搜索框中"org.apache.cxf.oneway.robust"，有几个在cxf-user 邮件列表中讨论的邮件映入我的眼帘。这也许就是解决问题的关键。

@@ -14,7 +14,7 @@ categories = [
 +++
 
 
-##  Java应用的云原生化痛点
+## Java应用的云原生化痛点
 
 ![image-jvm-problems.png](/images/quarkus/image-jvm-problems.png)
 
@@ -23,8 +23,6 @@ Java技术栈作为企业级开发的利器已经发展了快二十多年，大�
 ![image-jvm-run-time-consuming]({{ site.url }}{{ site.baseurl }}//assets/images/quarkus/image-jvm-run-time-consuming.png)
 
 上图展示的是一个典型的Java应用各模块执行时间的分布情况，大家可以看到，从JVM启动到真的应用程序执行需要经历VM加载，字节码文件加载，以及JVM为了提升效率，借助JIT(just in time)及时编译技术对解释执行的字节码进行局部优化，通过编译器生成本地执行代码的过程，同时还需要加上了JVM内部垃圾回收所耗费的时间。 这样一来典型的Java应用加载时间一般都是秒级起步，如果遇到比较大的应用初始花费几分钟都是正常的。 以往由于我们很少重新启动Java应用，Java应用启动时间长的问题一般很少暴露出来。但是在云原生应用场景下，我们会经常不断重启应用来实现滚动升级或者无服务应用场景。 Java应用启动时间长的问题就变成了Java应用云原生化亟待解决的问题。
-
-
 
 ## 通过GraalVM 提升Java应用执行效率
 
@@ -44,8 +42,6 @@ Java技术栈作为企业级开发的利器已经发展了快二十多年，大�
 
 ![image-quarkus-introduction](/images/quarkus/image-quarkus-introduction.png)
 
-
-
 红帽最近开源的Quarkus项目，借助开源社区的力量，通过对业界广泛使用的框架进行了适配工作，并结合云原生应用的特点，提供了一套端到端的Java云原生应用解决方案。
 
 ![image-quarkus-extensions](/images/quarkus/image-quarks-extensions.png)
@@ -62,13 +58,13 @@ Quarkus[采用扩展(Extension)](https://quarkus.io/guides/extension-authors-gui
 
 - 配置C语言开发环境
 
-- - Linux 安装GCC
+  - Linux 安装GCC
   - macOS 执行 xcode-select —install
   - windows GraalVM本地编译版本[刚刚提供支持](https://dev.to/skhmt/creating-a-native-executable-in-windows-with-graalvm-3g7f)，需要按照Windows SDK。
 
 - 安装Docker
 
-- - 可以编译docker native image
+  - 可以编译docker native image
 
   最近基于Quarkus写了两个简单的Web应用 [notification-service](https://github.com/WillemJiang/smart-park-demo/tree/master/notification-service) 和 [visitor-service](https://github.com/WillemJiang/smart-park-demo/tree/master/visitor-service) ，后续我会再写一篇文章，把相关的开发细节介绍给大家。值得一提是通过这个[docker文件](https://github.com/WillemJiang/smart-park-demo/blob/master/visitor-service/src/main/docker/Dockerfile.native)构建的基于alpine构建Linux X86本地镜像不到30M，这应该是我见到过的最小的Java应用的镜像了。
 

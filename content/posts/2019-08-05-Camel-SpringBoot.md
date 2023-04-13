@@ -181,7 +181,7 @@ public class InvoiceProcessor {
 
 缺省情况下 ConsumerTemplate 和 ProducerTemplate缺省设置的endpoint的缓存大小是**1000**。你可以通过修改Spring属性文件的方式设置缓存大小。
 
-```
+```sh
 camel.springboot.consumerTemplateCacheSize = 100
 camel.springboot.producerTemplateCacheSize = 200
 ```
@@ -198,48 +198,48 @@ camel.springboot.producerTemplateCacheSize = 200
 @DisableJmx(true)
 public class MyRouteTest extends CamelTestSupport {
 
-	@Autowired
-	private CamelContext camelContext;
+  @Autowired
+  private CamelContext camelContext;
 
-	@Override
-	protected CamelContext createCamelContext() throws Exception {
-		return camelContext;
-	}
+  @Override
+  protected CamelContext createCamelContext() throws Exception {
+    return camelContext;
+  }
 
-	@EndpointInject(uri = "direct:myEndpoint")
-	private ProducerTemplate endpoint;
+  @EndpointInject(uri = "direct:myEndpoint")
+  private ProducerTemplate endpoint;
 
-	@Override
-	public void setUp() throws Exception {
-		super.setUp();
-		RouteDefinition definition = context().getRouteDefinitions().get(0);
-		definition.adviceWith(context(), new RouteBuilder() {
-			@Override
-			public void configure() throws Exception {
-				onException(Exception.class).maximumRedeliveries(0);
-			}
-		});
-	}
+  @Override
+  public void setUp() throws Exception {
+    super.setUp();
+    RouteDefinition definition = context().getRouteDefinitions().get(0);
+    definition.adviceWith(context(), new RouteBuilder() {
+      @Override
+      public void configure() throws Exception {
+        onException(Exception.class).maximumRedeliveries(0);
+      }
+    });
+  }
 
-	@Override
-	public String isMockEndpointsAndSkip() {
+  @Override
+  public String isMockEndpointsAndSkip() {
     return "myEndpoint:put*";
-	}
+  }
 
-	@Test
-	public void shouldSucceed() throws Exception {
-		assertNotNull(camelContext);
-		assertNotNull(endpoint);
+  @Test
+  public void shouldSucceed() throws Exception {
+    assertNotNull(camelContext);
+    assertNotNull(endpoint);
 
-		String expectedValue = "expectedValue";
-		MockEndpoint mock = getMockEndpoint("mock:myEndpoint:put");
-		mock.expectedMessageCount(1);
-		mock.allMessages().body().isEqualTo(expectedValue);
-		mock.allMessages().header(MY_HEADER).isEqualTo("testHeader");
-		endpoint.sendBodyAndHeader("test", MY_HEADER, "testHeader");
+    String expectedValue = "expectedValue";
+    MockEndpoint mock = getMockEndpoint("mock:myEndpoint:put");
+    mock.expectedMessageCount(1);
+    mock.allMessages().body().isEqualTo(expectedValue);
+    mock.allMessages().header(MY_HEADER).isEqualTo("testHeader");
+    endpoint.sendBodyAndHeader("test", MY_HEADER, "testHeader");
 
-		mock.assertIsSatisfied();
-	}
+    mock.assertIsSatisfied();
+  }
 }
 ```
 

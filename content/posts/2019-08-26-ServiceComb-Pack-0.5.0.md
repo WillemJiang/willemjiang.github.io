@@ -48,12 +48,12 @@ ServiceComb Pack Alpha 收到 Omega 发送的事务消息（全局事务启动�
 
 目前 Alpha的状态机已经具备代替基于表扫描的功能， 并且在如下方面有比较好的提升：
 
-* 性能提升一个数量级，事件吞吐量每秒1.8w+，全局事务处理量每秒1.2k+
-* 内置健康指标采集器，可清晰了解系统瓶颈
-* 通过多种数据通道适配实现集群高可用
-* 向前兼容原有 gRPC 协议
-* 全新的可视化监控界面
-* 开放全新的 API
+- 性能提升一个数量级，事件吞吐量每秒1.8w+，全局事务处理量每秒1.2k+
+- 内置健康指标采集器，可清晰了解系统瓶颈
+- 通过多种数据通道适配实现集群高可用
+- 向前兼容原有 gRPC 协议
+- 全新的可视化监控界面
+- 开放全新的 API
 
 大家可以参见ServiceComb Pack 的[状态机使用手册](https://github.com/apache/servicecomb-pack/blob/master/docs/fsm/fsm_manual_zh.md)获取详细的使用配置信息。
 
@@ -88,8 +88,6 @@ ServiceComb Pack Alpha 收到 Omega 发送的事务消息（全局事务启动�
      // Omega can setup the Omega context with injectedTxContext instance
    }
    ```
-
-
 
 如果事务调用跨越了进程，我们可以通过[ServiceComb Pack Transport](https://github.com/apache/servicecomb-pack/tree/master/omega/omega-transport)的方式来进行传递。 但是如果[ServiceComb Transport](https://github.com/apache/servicecomb-pack/tree/master/omega/omega-transport)还没有实现相关的业务代码，或者是相关的Transport没有提供对应传递Context的接口，那我们应该怎么做？
 
@@ -127,8 +125,6 @@ public void listen(BarCommandWithTxContext cmdWithTxContext) {
 }
 ```
 
-
-
 #### 手动结束Saga事务
 
 通常情况下，`@SagaStart`标注的函数发起分布式事务同步调用，调用执行结束，函数返回。我们可以通过函数返回来判断整个Saga事务是否结束。 由于异步服务调用的引入，让我们无法根据`@SagaStart`标注的调用探知Saga事务结束的时间， 于是我们在ServiceComb Pack 0.5.0 中引入了`@SagaEnd` 这一标注让用户显示指定某个函数结束即标志整个Saga事务调用结束。
@@ -146,7 +142,7 @@ public void foo() {
 
 Service B:
 
-```
+```java
 @GetMapping("/bar")
 @Compensable
 @SagaEnd
