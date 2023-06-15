@@ -8,7 +8,8 @@ hasCJKLanguage: true
 paginate: 7
 enableEmoji: true
 PygmentsCodeFences: false
-googleAnalytics: "G-ZH6HYMX1K1" 
+# Google Analytics 4
+googleAnalyticsID = "G-ZH6HYMX1K1" 
 permalinks:
   posts: /:year/:month/:filename/
 

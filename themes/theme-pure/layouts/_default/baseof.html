@@ -9,6 +9,9 @@
         {{ .Site.Title}}{{ end }}
       {{- end -}}
     </title>
+    {{ if .Site.Params.GoogleAnalyticsID }}
+    {{ partial "analytics-gtag.html" . }}
+    {{ end }}
     {{ partial "head.html" . }}
   </head>
   {{- $.Scratch.Add "bodyClass" slice }}
