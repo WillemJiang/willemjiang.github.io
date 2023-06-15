@@ -9,7 +9,7 @@ paginate: 7
 enableEmoji: true
 PygmentsCodeFences: false
 # Google Analytics 4
-googleAnalyticsID = "G-ZH6HYMX1K1" 
+googleAnalyticsID: "G-ZH6HYMX1K1" 
 permalinks:
   posts: /:year/:month/:filename/
 
