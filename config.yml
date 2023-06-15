@@ -8,8 +8,6 @@ hasCJKLanguage: true
 paginate: 7
 enableEmoji: true
 PygmentsCodeFences: false
-# Google Analytics 4
-googleAnalyticsID: "G-ZH6HYMX1K1" 
 permalinks:
   posts: /:year/:month/:filename/
 
@@ -77,6 +75,9 @@ params:
   enableMathJax: true #Enable mathjax support, to use mathematical notations
   highlightjs:
     langs: ["java", "javascript"] # refer to http://staticfile.org/, search highlight.js, already have highlight.min.js
+
+  # Google Analytics 4
+  GoogleAnalyticsID: "G-ZH6HYMX1K1" 
 
   tag_cloud:
     min: 8
