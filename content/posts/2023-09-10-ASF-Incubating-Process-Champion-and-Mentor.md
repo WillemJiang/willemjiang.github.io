@@ -1,9 +1,8 @@
 +++
 author = "Hugo Authors"
 title = "开源项目捐赠到 ASF 孵化器项目管理委员会（IPMC）成员的职责"
-date = "2023*09*10"
-description = "
-对于捐赠到 ASF 孵化器的项目来说， ASF 孵化器项目管理委员会（IPMC）的成员会扮演两个角色，一个 孵化器领路人（Champion），另外一个是孵化器导师（Mentor）。"
+date = "2023-09-10"
+description = "对于捐赠到 ASF 孵化器的项目来说， ASF 孵化器项目管理委员会（IPMC）的成员会扮演两个角色，一个孵化器领路人（Champion），另外一个是孵化器导师（Mentor）。"
 tags = [
     "OpenSource",
     "Foundation" 
@@ -14,13 +13,13 @@ categories = [
 ]
 +++
 
-对于捐赠到 ASF 孵化器的项目来说， ASF 孵化器项目管理委员会（IPMC）的成员会扮演两个角色，一个 孵化器领路人（Champion），另外一个是孵化器导师（Mentor）。
+对于捐赠到 ASF 孵化器的项目来说， ASF 孵化器项目管理委员会（IPMC）的成员会扮演两个角色，一个 [孵化器领路人（Champion）](https://incubator.apache.org/guides/roles_and_responsibilities.html#champion)，另外一个是[孵化器导师（Mentor）](https://incubator.apache.org/guides/roles_and_responsibilities.html#mentor)。
 
 本文源自 ALC Beijing 9月份的 ASF 孵化讨论， Ted Liu 发起的 [ASF 项目孵化 101 倡议](https://kaiyuanshe.feishu.cn/docx/AVykdYCNUothfuxDnwJclwPrn0d)飞书文档。 笔者针对对 FAQ 中有关领路人和导师的职责进行进行了撰写并在大家的反馈基础上进一步进行完善，希望能对 ASF 孵化器的导师有所帮助。
 
 ## 孵化器领路人（Champion）的职责
 
-领路人（Champion）需要扮演好项目与基金会的沟通桥梁作用。 领路人要熟知[ASF的捐赠流程](https://incubator.apache.org/cookbook/)，以及ASF项目[成熟度评估模型](https://community.apache.org/apache-way/apache-project-maturity-model.html)，领路人需要帮助项目进行一些基本的自我评估，并完成孵化提案的评审工作。由于非盈利组织的资源有限，在邀请项目孵化导师的过程中， 领路人需要意识到充分完备的项目评估会帮助我们节省有限的孵化资源。
+[领路人（Champion）](https://incubator.apache.org/guides/roles_and_responsibilities.html#champion)需要扮演好项目与基金会的沟通桥梁作用。 领路人要熟知[ASF的捐赠流程](https://incubator.apache.org/cookbook/)，以及ASF项目[成熟度评估模型](https://community.apache.org/apache-way/apache-project-maturity-model.html)，领路人需要帮助项目进行一些基本的自我评估，并完成孵化提案的评审工作。由于非盈利组织的资源有限，在邀请项目孵化导师的过程中， 领路人需要意识到充分完备的项目评估会帮助我们节省有限的孵化资源。
 参考[孵化器的领路人的职责指导](https://incubator.apache.org/guides/roles_and_responsibilities.html#champion)，结合实际案例列举了以下具体的工作内容：
 
 1. 在候选项目进入孵化之前，帮助解决任何与进入ASF孵化器（ASF端）相关的障碍
@@ -34,7 +33,7 @@ categories = [
    * 如果遇到棘手的商标问题可以联系 trademarks@apache.org 发起讨论
    * 如果遇到棘手的法务问题可以通过 https://issues.apache.org/jira/projects/LEGAL 提出问题
 4. 帮助项目找到导师
-   * 要意识到导师与项目是相互成就， 导师的作用不是简单投票+1， 导师要有责任心，在辅导项目过程中是需要投入时间和精力的
+   * 要意识到导师与项目是相互成就， 导师的作用不是简单投票+1， 导师要有责任心，在辅导项目过程中需要投入时间和精力。
    * 邀请导师不要一味追求数量而讲究质量，一般一个孵化项目的导师不要超过4位，拒绝挂名导师。
    * 导师需要有一定的项目孵化经验，最好是有项目相关领域背景的导师，这样导师能够投入更多的时间和资源帮助项目成长
    * 注意导师的多元化，新老，中外导师搭配，这样有利于知识的共享与传递
