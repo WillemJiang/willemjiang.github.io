@@ -1,6 +1,6 @@
 +++
 author = "Hugo Authors"
-title = "开源项目捐赠到 ASF 孵化器项目管理委员会（IPMC）成员的职责"
+title = " ASF 孵化器项目管理委员会（IPMC）成员的职责"
 date = "2023-09-10"
 description = "对于捐赠到 ASF 孵化器的项目来说， ASF 孵化器项目管理委员会（IPMC）的成员会扮演两个角色，一个孵化器领路人（Champion），另外一个是孵化器导师（Mentor）。"
 tags = [
