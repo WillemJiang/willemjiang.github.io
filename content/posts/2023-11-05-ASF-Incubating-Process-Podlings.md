@@ -20,34 +20,34 @@ categories = [
 
 ### Apache 孵化器指南
 
-* 原文：https://incubator.apache.org/cookbook/
-* 译文：https://github.com/alc-beijing/translation/blob/master/apache/incubator/cookbook-zh.md
-* 微信公众号：https://mp.weixin.qq.com/s/egCh1ofUsxlKPkifPcwjWg
+* 原文：<https://incubator.apache.org/cookbook/>
+* 译文：<https://github.com/alc-beijing/translation/blob/master/apache/incubator/cookbook-zh.md>
+* 微信公众号：<https://mp.weixin.qq.com/s/egCh1ofUsxlKPkifPcwjWg>
 
 ### 新孵化项目提案参考
 
-* 原文：https://cwiki.apache.org/confluence/display/INCUBATOR/New+Podling+Proposal?desktop=true&macroName=markdown
-* 微信公众号：https://mp.weixin.qq.com/s/2L5HSDxx2JkohjrYfkpiwQ
+* 原文：<https://cwiki.apache.org/confluence/display/INCUBATOR/New+Podling+Proposal?desktop=true&macroName=markdown>
+* 微信公众号：<https://mp.weixin.qq.com/s/2L5HSDxx2JkohjrYfkpiwQ>
 
 ### IPMC 新项目基础设施设置指南
 
-* 原文：https://incubator.apache.org/guides/mentor.html
-* 译文：https://github.com/alc-beijing/alc-site/wiki/IPMC%E5%BB%BA%E8%AE%BE%E6%96%B0%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80%E5%AE%9E%E6%96%BD%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97
+* 原文：<https://incubator.apache.org/guides/mentor.html>
+* 译文：[IPMC 新项目基础设施设置指南](https://github.com/alc-beijing/alc-site/wiki/IPMC%E5%BB%BA%E8%AE%BE%E6%96%B0%E9%A1%B9%E7%9B%AE%E5%9F%BA%E7%A1%80%E5%AE%9E%E6%96%BD%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97)
 
 ### ASF 孵化项目发版常见问题
 
-* 原文：https://incubator.apache.org/guides/releasemanagement.html
-* 译文：https://alc-beijing.github.io/alc-site/post/apache-policy/asf-release-notes/
-* 微信公众号：https://mp.weixin.qq.com/s/VYWkI_wrLvS1E6FQvnshVA
+* 原文：<https://incubator.apache.org/guides/releasemanagement.html>
+* 译文：<https://alc-beijing.github.io/alc-site/post/apache-policy/asf-release-notes/>
+* 微信公众号：<https://mp.weixin.qq.com/s/VYWkI_wrLvS1E6FQvnshVA>
 
 ### Apache 项目毕业指南
 
-* 原文：http://incubator.apache.org/guides/graduation.html
-* 译文：https://github.com/alc-beijing/translation/blob/master/apache/incubator/Apache%E9%A1%B9%E7%9B%AE%E6%AF%95%E4%B8%9A%E6%8C%87%E5%8D%97.md
+* 原文：<http://incubator.apache.org/guides/graduation.html>
+* 译文：[Apache 项目毕业指南](https://github.com/alc-beijing/translation/blob/master/apache/incubator/Apache%E9%A1%B9%E7%9B%AE%E6%AF%95%E4%B8%9A%E6%8C%87%E5%8D%97.md)
 
 ### Apache 项目成熟度模型
 
-* 原文：https://community.apache.org/apache-way/apache-project-maturity-model.html
+* 原文：<https://community.apache.org/apache-way/apache-project-maturity-model.html>
 * 译文：Apache 项目成熟度模型
 
 ## 进入ASF孵化的项目考量点
