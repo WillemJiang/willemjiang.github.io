@@ -38,7 +38,7 @@ ASF凭借其对透明度和公平的承诺，致力于实践厂商中立的原�
 - 在中国传播ASF项目以及ASF之道的认知。
 - 与中国的大型科技公司进行互动。
 
-回顾我去年的工作，我为在中国传播ASF项目和Apache之道的重点和努力感到骄傲。这包括担任 CommunityOverCode Asia 2023的主席，并讨论了如何支持Apache孵化项目，我用中文编写了相关孵化导师文档。与中国的主要科技公司合作时，我与阿里巴巴、蚂蚁集团和字节跳动的OSPO密切合作，提倡上游优先的方法论，建立与ASF项目相关的本地社区。
+回顾我去年的工作，我为在中国传播ASF项目和Apache之道的重点和努力感到骄傲。这包括担任 CommunityOverCode Asia 2023的主席，并讨论了如何支持Apache孵化项目，我用中文编写了相关[孵化导师文档](https://willemjiang.github.io/2023/09/2023-09-10-asf-incubating-process-champion-and-mentor/)。与中国的主要科技公司合作时，我与阿里巴巴、蚂蚁集团和字节跳动的OSPO密切合作，提倡上游优先的方法论，建立与ASF项目相关的本地社区。
 
 在董事会会议审议顶级项目（TLP）的报告时，我注意到有些项目因为社区支持不足而选择退休。导致这种情况的原因有很多。除了向 PMC 发出呼吁邮件，我们还能否做出一些改变呢？ 这种情况需要的不仅仅是呼吁 PMC 提供帮助；它需要一个结构性解决方案，以降低参与者的门槛，分享治理最佳实践，在基金会层面简化发布流程。
 
@@ -84,7 +84,7 @@ for the ASF projects.
 - Spreading awareness of the ASF projects and the ASF Way in China.
 - Engaging with the big tech companies in China.
 
-Looking back at my work from last year, I am proud of my focus and efforts in spreading awareness of ASF projects and the Apache Way in China. This included chairing CommunityOverCode Asia 2023 and discussing the championing of Apache incubating projects, for which I authored mentorship documents in Chinese. Engaging with major tech companies in China, I worked closely with the OSPOs of Alibaba, AntGroup, and ByteDance, advocating an upstream-first approach and building local communities with ASF projects.
+Looking back at my work from last year, I am proud of my focus and efforts in spreading awareness of ASF projects and the Apache Way in China. This included chairing CommunityOverCode Asia 2023 and discussing the championing of Apache incubating projects, for which I authored [mentorship documents](https://willemjiang.github.io/2023/09/2023-09-10-asf-incubating-process-champion-and-mentor/) in Chinese. Engaging with major tech companies in China, I worked closely with the OSPOs of Alibaba, AntGroup, and ByteDance, advocating an upstream-first approach and building local communities with ASF projects.
 
 Reviewing reports of Top-Level Projects (TLPs) before the board meeting, I noted some moved to the attic due to community support shortfalls. There are a variety of reasons that could cause this kind
 of situation. Can we change it besides sending out a callout to the PMC?
